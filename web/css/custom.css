@@ -1,0 +1,102 @@
+body {
+    padding-bottom: 0;
+    word-spacing: 5px;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {
+    color: #dddddd;
+}
+.container-custom {
+    background: #ecf0f1;
+}
+.col-12-custom {
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: 3px solid darkgrey;
+}
+.form-widget select {
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #dce4ec;
+    border-radius: 4px;
+    font-size: 17px;
+}
+select:disabled {
+    background: #ecf0f1;
+    border: 2px solid #dce4ec;
+}
+.form-errors ul {
+    color: #e74c3c;
+    list-style-type: none;
+    word-spacing: 5px;
+}
+.a-custom {
+    font-size: 16px;
+    word-spacing: 4px;
+    margin-left: 10px;
+    color: #10bc9c;
+    text-decoration: underline;
+}
+.h1-custom {
+    text-align: center;
+    margin-top: 65px;
+}
+.h2-custom {
+    margin-top: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px solid darkgrey;
+}
+.h3-custom {
+    text-align: center;
+    margin-bottom: 220px;
+}
+.h4-border {
+    padding-right: 10px;
+    border-right: 2px solid #2c3e50;
+}
+.btn-primary-custom {
+    margin-left: 30px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+.btn-success-custom, .btn-danger-custom {
+    margin-top: 15px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    padding-right: 60px;
+    padding-left: 60px;
+}
+.passport-number {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+.passport-value {
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.map-marker-custom, .earphone-custom {
+    margin-right: 5px;
+    font-size: 15px;
+}
+.img-thumbnail {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+}
+footer {
+    margin-top: 30px;
+    background: #2c3e50;
+}
+.modal-footer {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    border-top-width: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

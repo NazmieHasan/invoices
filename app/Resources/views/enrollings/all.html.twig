@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+{% for msg in app.session.flashbag.get('info')  %}
+    <div class="alert alert-success" id="info">
+        {{ msg }}
+    </div>
+{% endfor %}   
+<a class="btn btn-primary" href="{{ path('enrolling_create') }}">Create new enrolling</a>
+<div class="container body-content" style="margin-top: 40px; background: #f5f5f5;">
+    <div class="row">
+        <div class="col-md-12" style="padding-top: 10px; padding-bottom: 10px; border-top: 1px solid gray; border-bottom: 1px solid gray;">
+            <div class="col-md-2">    
+                <h4 style="font-weight: bold;"># Date Added</h4>
+            </div>
+            <div class="col-md-2">
+                <h4 style="font-weight: bold;">Student</h4>
+            </div>
+            <div class="col-md-2">    
+                <h4 style="font-weight: bold;">Personal &#x2116;</h4>
+            </div>
+            <div class="col-md-1">
+                <h4 style="font-weight: bold;">Image</h4>
+            </div>
+            <div class="col-md-4">    
+                <h4 style="font-weight: bold;">Course</h4>
+            </div> 
+            <div class="col-md-1">    
+                <h4 style="font-weight: bold;">Action</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for enrolling in pagination %}
+            <div class="col-md-12" style="padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid gray;">
+                <div class="col-md-2">         
+                    <h4>{{ enrolling.id }} {{ enrolling.dateAdded|date("Y-m-d") }}</h4>
+                </div>
+                <div class="col-md-2">
+                    <h4>{{ enrolling.student.firstName }} {{ enrolling.student.lastName }}</h4>
+                </div>
+                <div class="col-md-2">    
+                   <h4>{{ enrolling.student.PersonalNumber}}</h4>
+                </div>
+                <div class="col-md-1">
+                    <a href="{{ path('student_view', { id: enrolling.student.id } ) }}">
+                        <img src ="{{ asset('uploads/images/students/' ~ enrolling.student.image) }}" class="img-thumbnail" style="border-radius: 50%;">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ path('course_view', { id: enrolling.course.id } ) }}">       
+                        <h4>{{ enrolling.course.title}}</h4>
+                    </a>
+                </div>
+                <div class="col-md-1" style="font-size: 18px; font-weight: bold;">
+                   <a href="{{ path('invoice_create', {id: enrolling.id}) }}" target=_blank style="color: #d62c1a;">Create Invoice</a>
+                   {# <p style="color: green;">Invoice Created</p> #}  
+                </div>  
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+   
+{% endblock %}

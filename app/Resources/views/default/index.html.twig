@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+{% for msg in app.session.flashbag.get('info')  %}
+    <div class="alert alert-success" id="info">
+        {{ msg }}
+    </div>
+{% endfor %}
+<div class="container body-content">
+    <a class="btn btn-primary" href="{{ path('course_create') }}">Create New Course</a>
+    <div class="row">
+        {% for course in pagination %}
+            <div class="col-md-6">
+                <article style="margin-top: 30px; margin-bottom: 40px; padding: 5px 10px 60px 10px; font-size: 18px; word-spacing: 5px; background: #f5f5f5;">
+                    <header>
+                        <a href="{{ path('course_view', { id: course.id } ) }}">
+                            <h2>{{ course.title }}</h2>
+                        </a>
+                    </header>
+                    <p>{{ course.description }}</p>
+                    <footer>
+                        <div class="pull-right">
+                            <a class="btn btn-primary" href="{{ path('course_view', {id: course.id}) }}">Read more &raquo;</a>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>       
+ 
+{% endblock %}
