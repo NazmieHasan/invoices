@@ -3,182 +3,186 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>{% block title %}Junior Hackathon Task{% endblock %}</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    {% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-    <script>
-        setTimeout(function() {
-            $('#info').fadeOut();
-        }, 2000)
-    </script>
+    <title>Junior Hackathon Task - Invoice</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            color: #333333;
+        }
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-spacing: 0;
+        }
+        p {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        span {
+            font-weight: bold;
+        }
+        .title h1 {
+            margin: 0;
+            font-weight: bold;
+            text-align: center;
+        }
+        .num-and-data {
+            text-align: right; 
+        } 
+        .table-users {
+            margin-top: 10px;
+            border-spacing: 3px;
+        }
+        .table-users td {
+            width: 50%;
+            padding: 5px;
+            border: 1px solid #333333; 
+            border-radius: 5px; 
+        } 
+        .table-invoice th {
+            text-align: center;
+            background: darkgrey;
+        }
+        .table-invoice th, .table-invoice td {
+            border: 1px solid black;
+        }
+        .price-text {
+            margin-left: 30px;
+        }
+        .table-tax {
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        .table-tax td {
+            text-align: right;
+        }
+        .table-bank td {
+            border: 1px dotted lightgray;
+            padding: 3px;
+        }
+        .table-users-name {
+            font-style: italic;
+        }
+        .table-users-name span {
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+        .law {
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        .invoice-info {
+            margin-top: 140px;
+        }
+    </style>
 </head>
-
-{% block body %}  
+<body>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center" style="margin-top: 30px;">
-                <h1 style="font-weight: bold;">Invoice Original</h1>
-            </div>
+        <div class="title">
+            <h1>Faktura Original</h1>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-right" style="margin-bottom: 40px;">
-                <h4>Number: <span style="font-weight: bold;">000000{{enrolling.id}}</span></h4>
-                <h4>Date: <span style="font-weight: bold;">{{ enrolling.dateAdded|date("Y-m-d") }}</h4>
-            </div>
+        <div class="num-and-data">
+            <p>Nomer: <span>000000{{enrolling.id}}</span></p>
+            <p>Data: <span>{{ enrolling.dateAdded|date("Y-m-d") }}</span></p>   
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6" style="padding-left: 5px; padding-right: 5px;">
-                        <div class="poluchatel" style="border: 1px solid #333333; border-radius: 5px; padding: 10px;">
-                            <h4>{{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</h4>
-                            <h4>Town Varna</h4>
-                            <h4>Address </h4> 
-                            <h4>MOL {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} </h4>
-                            <h4>Phone </h4>
-                        </div>
-                    </div>
-                    <div class="col-md-6" style="padding-left: 5px; padding-right: 5px;">
-                        <div class="dostavchik" style="border: 1px solid #333333; border-radius: 5px; padding: 10px;">
-                            <h4>Driving Courses</h4>
-                            <h4>Town Varna</h4>
-                            <h4>Address ul.Ivan Vazov No: 175, vh. C, ap. 68</h4> 
-                            <h4>MOL STEFAN KIRILOV STEFANOV</h4>
-                            <h4>Phone</h4>
-                         </div>
-                    </div>
-                </div>
-            </div>
+        <table class="table-users">
+           <tr>
+               <td>
+                   <p>Poluchatel: {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
+                   <p>DDS N:</p>
+                   <p>Ident. N:</p>
+                   <p>Grad Varna</p>
+                   <p>Adres </p> 
+                   <p>MOL {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} </p>
+                   <p>Telefon</p>  
+               </td>
+               <td>
+                   <p>Dostavchik: Driving Courses</p>
+                   <p>DDS N:</p>
+                   <p>Ident. N: 01010101</p>
+                   <p>Grad Varna</p>
+                   <p>Adres ul.Nikola Vapcarov</p> 
+                   <p>MOL STEFAN KIRILOV STEFANOV</p>
+                   <p>Telefon</p>
+               </td>
+           </tr>
+        </table>
+        <table class="table-invoice">
+           <tr>
+               <th style="width: 5%;">N</th>
+               <th style="width: 10%;">Kod</th>
+               <th style="width: 45%;">Naimenivanie na stokata / uslugata</th>
+               <th style="width: 10%;">Mqrka</th>
+               <th style="width: 10%;">Kolich.</th>
+               <th style="width: 10%;">Cena</th>
+               <th style="width: 10%;">Suma</th>
+           </tr>
+           <tr>
+               <td style="width: 5%; text-align: center;">1</td>
+               <td style="width: 10%;"></td>
+               <td style="width: 45%;">{{ enrolling.course.title}}</td>
+               <td style="width: 10%; text-align: center;">br.</td>
+               <td style="width: 10%; text-align: right;">1.00</td>
+               <td style="width: 10%; text-align: right;">{{ enrolling.course.price }}</td>
+               <td style="width: 10%; text-align: right;">{{ enrolling.course.price }}</td>
+           </tr>
+        </table>   
+        <table class="table-tax">
+            <tr>
+                <td style="width: 55%;">
+                </td>
+                <td style="width: 30%;">
+                    <p>Danichna osnova:</p>
+                    <p>DDS 0%:</p>
+                    <p>Suma za plashtane:</p>
+                </td>
+                <td style="width: 15%;">
+                    <p>{{ enrolling.course.price}}</p>
+                    <p>0.00</p>
+                    <p>{{ enrolling.course.price}}</p>
+                </td>
+            </tr>
+        </table>
+        <div class="price-text">
+            <p><span>Slovom:</span> {{ enrolling.course.priceText}}</p>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center" style="margin-top: 40px;">
-                <div class="row">
-                    <div class="col-md-1" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">&#x2116;</h4>
-                    </div>
-                    <div class="col-md-1" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">Code</h4>
-                    </div>
-                    <div class="col-md-5" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">Product / service name</h4>
-                    </div>
-                    <div class="col-md-1" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">Measure</h4>
-                    </div>
-                    <div class="col-md-2" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">Quantity</h4>
-                    </div>
-                    <div class="col-md-1" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">Price</h4>
-                    </div>
-                    <div class="col-md-1" style="border: 1px solid #333333; background: gray;">
-                        <h4 style="font-weight: bold;">Suma</h4>
-                    </div>
-                </div>
-            </div>
+        <table class="table-bank">
+           <tr>
+               <td style="width: 60%;">
+                   <p>Data na danichnoto sibitie: {{ enrolling.dateAdded|date("Y-m-d") }}</p>
+                   <p>Osnovanie za nenachisl. na DDS:</p>
+                   <p>Opisanie na sdelkata:</p>
+                   <p>Mqsto na sdelkata: Varna</p>  
+               </td>
+               <td style="width: 40%;">
+                   <p>Plashtane: V broi</p>
+                   <p>IBAN:</p> 
+                   <p>Banka:</p>
+                   <p>Bankov cod:</p>
+               </td>
+           </tr>
+        </table>
+        <table class="table-users-name">
+            <tr>
+                <td style="width: 55% padding: 5px;">
+                    <p>Poluchil: {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
+                </td>
+                <td style="width: 45%;">
+                    <p>Sistavil: <span>{{ app.user.firstName }} {{ app.user.fathersName }} {{ app.user.lastName }}</span></p>
+                </td>
+            </tr>
+        </table>
+        <div class="law">
+            <p>Siglasno 4l. 6, al. 1 ot Zakona za S4etovodstvoto, 4l. 114 ot ZDDS i 4l. 78 ot PPZDDS pechatit i podpisit ne sa zadiljitelni rekviziti viv fakturata.</p>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-1 text-center" style="border: 1px solid #333333;">
-                        <h4>1</h4>
-                    </div>
-                    <div class="col-md-1" style="border: 1px solid #333333;">
-                        <h4 style="padding: 10px;"></h4>
-                    </div>
-                    <div class="col-md-5" style="border: 1px solid #333333;">
-                        <h4>{{ enrolling.course.title}}</h4>
-                    </div>
-                    <div class="col-md-1 text-center" style="border: 1px solid #333333;">
-                        <h4>br.</h4>
-                    </div>
-                    <div class="col-md-2 text-right" style="border: 1px solid #333333;">
-                        <h4>1.00</h4>
-                    </div>
-                    <div class="col-md-1 text-right" style="border: 1px solid #333333;">
-                        <h4>{{ enrolling.course.price }}</h4>
-                    </div>
-                    <div class="col-md-1 text-right" style="border: 1px solid #333333;">
-                        <h4>{{ enrolling.course.price }}</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="margin-top: 20px; margin-bottom: 40px;">
-                <div class="row">
-                    <div class="col-md-10 text-right">
-                        <h4 style="font-weight: bold;">Tax base:</h4>
-                        <h4 style="font-weight: bold;">0% VAT:</h4>
-                        <h4 style="font-weight: bold;">Payment amount:</h4>
-                    </div>
-                    <div class="col-md-2 text-right">
-                        <h4>{{ enrolling.course.price}}</h4>
-                        <h4>0.00</h4>
-                        <h4>{{ enrolling.course.price}}</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h4><span style="font-weight: bold;"></span> {{ enrolling.course.priceText}} </h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="margin-bottom: 20px;">
-                <div class="row">
-                    <div class="col-md-7" style="border-top: 1px solid lightgray; border-right: 1px dotted lightgray; border-bottom: 1px solid lightgray; border-left: 1px solid lightgray;">
-                        <h4>Date of the tax event: {{ enrolling.dateAdded|date("Y-m-d") }}</h4>
-                        <h4>Grounds for non-accrual of VAT:</h4>
-                        <h4>Transaction description:</h4>
-                        <h4>Place of transaction: Varna</h4>
-                    </div>
-                    <div class="col-md-5" style="border-top: 1px solid lightgray; border-right: 1px solid lightgray; border-bottom: 1px solid lightgray; border-left: 1px dotted lightgray;">
-                        <h4>Cash payment</h4>
-                        <h4>IBAN:</h4>
-                        <h4>Bank:</h4>
-                        <h4>Bank code:</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="margin-bottom: 40px;">
-                <div class="col-md-7">
-                    <h4 style="font-style: italic;">Received: {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</h4>
-                </div>
-                <div class="col-md-5">
-                    <h4 style="font-style: italic;">Compiled: <span style="text-transform: uppercase;">{{ app.user.firstName }} {{ app.user.fathersName }} {{ app.user.lastName }}</span></h4>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="margin-bottom: 500px;">
-                <p></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12" style="margin-bottom: 40px; border-top: 2px solid black;">
-                <div class="row">
-                    <div class="col-md-11">
-                        <h5>Driving Courses, tel: 123456987, http://www.courses.com</h5>
-                    </div>
-                    <div class="col-md-1 text-right">
-                        <h5>1</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="invoice-info">
+            <hr />
+            <p>Driving Courses, telefon: 123456987, http://www.courses.com</p>
+        </div> 
     </div>
-      
-{% endblock %}
 
 </body>
 </html>

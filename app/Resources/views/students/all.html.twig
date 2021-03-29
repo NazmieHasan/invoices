@@ -9,13 +9,14 @@
     {% endfor %}
     <div class="container container-custom">
         <div class="row">
-                <h2 class="h2-custom">STUDENTS IN THE SYSTEM<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">CREATE NEW</a></h2>
-                {% for student in pagination %}
-                    <div class="col-md-12 col-12-custom text-center">
-                        <div class="col-md-3">
-                            <img src ="{{ asset('uploads/images/students/' ~ student.image) }}" alt="image" class="img-thumbnail">
+            <h2 class="h2-custom">STUDENTS IN THE SYSTEM<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">CREATE NEW</a></h2>
+            {% for student in pagination %}
+                <div class="col-md-12 col-12-custom text-center">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <div class="col-md-4">
+                            <img src ="{{ asset('uploads/images/students/' ~ student.image) }}" alt="image" class="img-thumbnail img-students">
                         </div>
-                        <div class="col-md-9 text-left">
+                        <div class="col-md-8 text-left">
                             <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }}</h3>
                             <h4>Personal Number: {{ student.personalNumber }}</h4>
                             <p>
@@ -24,8 +25,9 @@
                                 <a class="btn btn-danger" href="{{ path('student_delete', {id: student.id}) }}" style="margin-top: 10px; margin-right: 20px; margin-bottom: 10px;">Delete Student</a>
                             </p>
                         </div>
-                  </div>
-              {% endfor %}
+                    </div>
+                </div>
+           {% endfor %}
         </div>
     </div>
     {# display navigation #}

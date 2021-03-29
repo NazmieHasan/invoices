@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class EnrollingController extends Controller
 {
@@ -68,26 +70,6 @@ class EnrollingController extends Controller
     }
     
     /**
-     * @Route("/create-invoice/enrolling/{id}", name="invoice_create")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function view(int $id)
-    {
-        $enrolling = $this->enrollingService->findOneById($id);
-
-        if (null === $enrolling){
-            return $this->redirectToRoute("invoices_index");
-        }
-
-        return $this->render("invoices/create.html.twig",
-            [
-                'enrolling' => $enrolling
-            ]);
-    }
-    
-    /**
      * @Route("/enrollings", name="all_enrollings")
      * @param Reguest $reguest
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
@@ -109,6 +91,41 @@ class EnrollingController extends Controller
             [
                 'pagination' => $pagination
             ]);
+    }
+    
+    /**
+     * @Route("/enrolling/{id}/invoice", name="create_invoice")
+     * @param $id
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function generate_pdf(Request $request, int $id)
+    {
+    
+    $enrolling = $this->enrollingService->findOneById($id);
+    
+    if (null === $enrolling){
+            return $this->redirectToRoute("invoices_index");
+        }
+    
+    $options = new Options();
+     
+    $dompdf = new Dompdf($options);
+    
+    $html = $this->renderView('invoices/create.html.twig',
+            [
+                'enrolling' => $enrolling
+            ]);        
+   
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+    
+    $dompdf->stream("invoice-for-enrolling-$id.pdf", 
+        [
+            "Attachment" => false
+        ]);
     }
 
 }

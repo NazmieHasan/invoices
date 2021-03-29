@@ -2,6 +2,9 @@ body {
     padding-bottom: 0;
     word-spacing: 5px;
 }
+.nav > li > a {
+    padding: 20px 25px;
+}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {
     color: #dddddd;
 }
@@ -44,6 +47,7 @@ select:disabled {
 }
 .h2-custom {
     margin-top: 0;
+    margin-bottom: 0;
     padding-top: 30px;
     padding-bottom: 30px;
     text-align: center;
@@ -84,9 +88,16 @@ select:disabled {
     font-size: 15px;
 }
 .img-thumbnail {
+    padding: 0;  
+}
+.img-students {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.img-enrollings {
     margin-top: 5px;
     margin-bottom: 5px;
-    padding: 0;
+    border-radius: 50%;
 }
 footer {
     margin-top: 30px;
