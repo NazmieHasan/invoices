@@ -94,13 +94,13 @@ class EnrollingController extends Controller
     }
     
     /**
-     * @Route("/enrolling/{id}/invoice", name="create_invoice")
+     * @Route("/enrolling/{id}/view-invoice", name="view_invoice")
      * @param $id
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
-    public function generate_pdf(Request $request, int $id)
+    public function view_invoice(Request $request, int $id)
     {
     
     $enrolling = $this->enrollingService->findOneById($id);
@@ -125,6 +125,41 @@ class EnrollingController extends Controller
     $dompdf->stream("invoice-for-enrolling-$id.pdf", 
         [
             "Attachment" => false
+        ]);
+    }
+    
+    /**
+     * @Route("/enrolling/{id}/download-invoice", name="download_invoice")
+     * @param $id
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function download_invoice(Request $request, int $id)
+    {
+    
+    $enrolling = $this->enrollingService->findOneById($id);
+    
+    if (null === $enrolling){
+            return $this->redirectToRoute("invoices_index");
+        }
+    
+    $options = new Options();
+     
+    $dompdf = new Dompdf($options);
+    
+    $html = $this->renderView('invoices/create.html.twig',
+            [
+                'enrolling' => $enrolling
+            ]);        
+   
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+    
+    $dompdf->stream("invoice-for-enrolling-$id.pdf", 
+        [
+            "Attachment" => true
         ]);
     }
 

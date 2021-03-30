@@ -2,22 +2,24 @@
 
 {% block main %}  
 
-<div class="container body-content">
-    <div class="row">
-        <div class="col-md-4">
-            <img src ="{{ asset('uploads/images/students/' ~ student.image) }}" class="img-thumbnail" style="padding: 0;">
-        </div>
-        <div class="col-md-8">   
-            <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }} <span style="color: lightgray;">[{{ student.id }}]</span></h3>
-            <p style="font-size: 18px; font-weight: bold;">Personal Number: {{ student.personalNumber }}</p>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-4">
+                <img src ="{{ asset('uploads/images/students/' ~ student.image) }}" class="img-thumbnail" style="padding: 0;">
+            </div>
+            <div class="col-md-8">   
+                <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }} <span class="student-id">[{{ student.id }}]</span></h3>
+                <p class="personal-num">Personal Number: {{ student.personalNumber }}</p>
                 {% for enrolling in enrollings %}
                     <hr />
-                    <p style="font-size: 18px;"> {{ enrolling.id }} {{ enrolling.dateAdded|date("Y-m-d") }}<a href="{{ path('course_view', { id: enrolling.course.id } ) }}"> {{ enrolling.course.title }} </a></p>         
+                    <p>{{ enrolling.id }} {{ enrolling.dateAdded|date("Y-m-d") }}
+                        <a href="{{ path('course_view', { id: enrolling.course.id } ) }}"> {{ enrolling.course.title }} </a>
+                    </p>         
                     <hr />
                 {% endfor %}
                 <a class="btn btn-default" href="{{ path('all_students') }}">All Students</a>      
-        </div>
-    </div>  
-</div>
+            </div>
+        </div>  
+    </div>
    
 {% endblock %}

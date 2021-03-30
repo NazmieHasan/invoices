@@ -24,6 +24,19 @@ class Course
     private $id;
 
     /**
+     * @Assert\Length(
+     *     min = 10,
+     *     max = 40,
+     *     minMessage="Title min length is 10",
+     *     maxMessage="Title max length is 40"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Za-z0-9-+ ]+$/",
+     *     match=true,
+     *     message="Title contains letters, digit, space, '+' and '-'"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, unique=true)
@@ -31,6 +44,19 @@ class Course
     private $title;
 
     /**
+     * @Assert\Length(
+     *     min = 20,
+     *     max = 100,
+     *     minMessage="Description min length is 20",
+     *     maxMessage="Description max length is 100"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Za-z0-9.!?, ]+$/",
+     *     match=true,
+     *     message="Description contains letters, digit, '.', '!', '?', ',' and space"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
@@ -38,29 +64,52 @@ class Course
     private $description;
 
     /**
-     * @var string
+     * @Assert\Date
      *
-     * @ORM\Column(name="startDate", type="string", length=255)
+     * @var \DateTime
+     *
+     * @ORM\Column(name="startDate", type="date")
      */
     private $startDate;
 
     /**
-     * @var string
+     * @Assert\Date
      *
-     * @ORM\Column(name="finishDate", type="string", length=255)
+     * @var \DateTime
+     *
+     * @ORM\Column(name="finishDate", type="date")
      */
     private $finishDate;
     
     /**
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[0-9]{3,4}.[0-9]{2}$/",
+     *     match=true,
+     *     message="The price must be a three-digit or four-digit floating point number to 2 digits after the floating point"
+     * )
+     *
      * @var string
      *
-     * @ORM\Column(name="price", type="string", length=255)
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
     
     /**
+     * @Assert\Length(
+     *     min = 10,
+     *     max = 40,
+     *     minMessage="Price text min length is 10",
+     *     maxMessage="Price text max length is 40"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Za-z0. ]+$/",
+     *     match=true,
+     *     message="Price text contains letters, '.' and space"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="priceText", type="string", length=255)

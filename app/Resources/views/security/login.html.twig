@@ -9,6 +9,7 @@
             {{ msg }}
         </div>
     {% endfor %}
+    
     <div class="container body-content span=8 offset=2">
         <div class="well">
             <form name="authenticate" class="form-horizontal" action="{{ path('security_login') }}" method="post">
@@ -37,4 +38,5 @@
             </form>
         </div>
     </div>
+    
 {% endblock %}

@@ -2,51 +2,71 @@
 
 {% block main %}
 
-<div class="container body-content span=8 offset=2">
-    <div class="well">
-        <form class="form-horizontal" enctype="multipart/form-data" action="{{ path('student_create') }}" method="POST">
-            <fieldset>
-                <legend>New Student</legend>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label" for="student_personalNumber">Personal Number</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="student_personalNumber" placeholder="Personal Number" name="student[personalNumber]">
-                    </div>
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            {% for msg in app.session.flashbag.get('errors')  %}
+                <div class="alert alert-danger">
+                    {{ msg }}
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label" for="student_firstName">First Name</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="student_firstName" placeholder="First Name" name="student[firstName]">
+            {% endfor %}
+            <form class="form-horizontal" enctype="multipart/form-data" action="{{ path('student_create') }}" method="POST">
+                <fieldset>
+                    <legend>New Student</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="student_personalNumber">Personal Number</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="student_personalNumber" placeholder="Personal Number" name="student[personalNumber]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.personalNumber) }}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label" for="student_fathersName">Father's Name</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" id="student_fathersName" placeholder="Farther's Name" name="student[fathersName]">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="student_firstName">First Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="student_firstName" placeholder="First Name" name="student[firstName]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.firstName) }}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-4 control-label" for="student_lastName">Last Name</label>
-                    <div class="col-sm-4 ">
-                        <input type="text" class="form-control" id="student_LastName" placeholder="Last Name" name="student[lastName]">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="student_fathersName">Father's Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="student_fathersName" placeholder="Farther's Name" name="student[fathersName]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.fathersName) }}
+                        </div>
                     </div>
-                </div> 
-                <div class="form-group">
-                    <label class="col-sm-4 control-label" for="student_image">Upload Image</label>
-                    <div class="col-sm-4">
-                        <input accept=".jpeg, .jpg" type="file" class="form-control" id="student_image" placeholder="Upload Image" name="student[image]">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="student_lastName">Last Name</label>
+                        <div class="col-sm-4 ">
+                            <input type="text" class="form-control" id="student_LastName" placeholder="Last Name" name="student[lastName]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.lastName) }}
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="student_image">Upload Image</label>
+                        <div class="col-sm-4">
+                            <input accept=".jpeg, .jpg" type="file" class="form-control" id="student_image" placeholder="Upload Image" name="student[image]">
+                        </div>
+                         <div class="form-errors">
+                            {{ form_errors(form.image) }}
+                        </div>
                     </div>
-                </div>
-                {{ form_row(form._token) }}
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-4">
-                        <a class="btn btn-default" href="{{ path('all_students') }}">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                    {{ form_row(form._token) }}
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" href="{{ path('all_students') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
+        </div>
     </div>
-</div>
 
 {% endblock %}

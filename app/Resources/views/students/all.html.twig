@@ -7,6 +7,7 @@
             {{ msg }}
         </div>
     {% endfor %}
+    
     <div class="container container-custom">
         <div class="row">
             <h2 class="h2-custom">STUDENTS IN THE SYSTEM<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">CREATE NEW</a></h2>
@@ -19,10 +20,10 @@
                         <div class="col-md-8 text-left">
                             <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }}</h3>
                             <h4>Personal Number: {{ student.personalNumber }}</h4>
-                            <p>
-                                <a class="btn btn-primary" href="{{ path('student_view', {id: student.id}) }}" style="margin-top: 10px; margin-right: 20px; margin-bottom: 10px;">View Courses</a>
-                                <a class="btn btn-success" href="{{ path('student_edit', {id: student.id}) }}" style="margin-top: 10px; margin-right: 20px; margin-bottom: 10px;">Edit Student</a>
-                                <a class="btn btn-danger" href="{{ path('student_delete', {id: student.id}) }}" style="margin-top: 10px; margin-right: 20px; margin-bottom: 10px;">Delete Student</a>
+                            <p class="students-btn">
+                                <a class="btn btn-primary" href="{{ path('student_view', {id: student.id}) }}">View Courses</a>
+                                <a class="btn btn-success" href="{{ path('student_edit', {id: student.id}) }}">Edit Student</a>
+                                <a class="btn btn-danger" href="{{ path('student_delete', {id: student.id}) }}">Delete Student</a>
                             </p>
                         </div>
                     </div>
@@ -30,9 +31,12 @@
            {% endfor %}
         </div>
     </div>
-    {# display navigation #}
-    <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
+    
+    <div class="container text-center">
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     </div>
 
 {% endblock %}

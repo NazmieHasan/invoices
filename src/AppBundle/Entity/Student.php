@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Student
@@ -23,6 +24,11 @@ class Student
     private $id;
 
     /**
+     * @Assert\Regex(
+     *     pattern = "/^[1-9]{10}$/",
+     *     match=true,
+     *     message="The personal number can contain only 10 digits"
+     * )
      * @var string
      *
      * @ORM\Column(name="personalNumber", type="string", length=255, unique=true)
@@ -30,6 +36,19 @@ class Student
     private $personalNumber;
 
     /**
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 15,
+     *     minMessage="First name min length is 3",
+     *     maxMessage="First name max length is 15"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Z]{1}[a-z]+$/",
+     *     match=true,
+     *     message="First name must start with a capital letter, followed by lowercase letters"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
@@ -37,6 +56,19 @@ class Student
     private $firstName;
     
     /**
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 15,
+     *     minMessage="Father's name min length is 3",
+     *     maxMessage="Father's name max length is 15"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Z]{1}[a-z]+$/",
+     *     match=true,
+     *     message="Father's name must start with a capital letter, followed by lowercase letters"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="fathersName", type="string", length=255)
@@ -44,6 +76,19 @@ class Student
     private $fathersName;
 
     /**
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 15,
+     *     minMessage="Last name min length is 3",
+     *     maxMessage="Last name max length is 15"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/^[A-Z]{1}[a-z]+$/",
+     *     match=true,
+     *     message="Last name must start with a capital letter, followed by lowercase letters"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
@@ -51,6 +96,16 @@ class Student
     private $lastName;
     
     /**
+     * @Assert\File(
+     *     mimeTypes = {"image/jpeg", "image/jpg"},
+     *     mimeTypesMessage = "File type must be only jpeg or jpg with max size 1MB"
+     * )
+     *
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     maxSizeMessage = "File type must be only jpeg or jpg with max size 1MB"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)

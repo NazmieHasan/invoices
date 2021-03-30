@@ -2,60 +2,60 @@
 
 {% block main %}  
 
-<div class="container body-content">
-    <div class="row">
-        <div class="col-md-9">
-            <article style="font-size: 18px;">
-                <h2><span style="color: lightgray;">{{ course.id }}</span> {{ course.title }}</h2>
-                <p>{{ course.description }}</p>
-                <p>Start Date: {{ course.startDate }}</p>
-                <p>Finish Date: {{ course.finishDate }}</p> 
-                <p>Price: {{ course.price }} BGN</p>
-                <div>
-                    <a class="btn btn-success" href="{{ path('course_edit', {id: course.id}) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ path('course_delete', {id: course.id}) }}">Delete</a>
-                    <a class="btn btn-default" href="{{ path('invoices_index') }}">All Courses</a>
-                </div>
-              </article>
-        </div>
-    </div>
-     <div class="row">
-        <div class="col-md-12">  
-            <h1 style="margin-top: 40px;">Students in this course</h1>
-        </div>
-    </div>  
-     <div class="row">
-         <div class="col-md-10">
-             <div class="col-md-1 text-center">
-                 <p style="font-size: 22px;">#</p>
-             </div>
-             <div class="col-md-2">
-                 <p style="font-size: 22px;">Date</p>
-             </div>
-             <div class="col-md-7">
-                 <p style="font-size: 22px;">Student</p>
-             </div>
-         </div>
-     </div>
-     <div class="row">
-         {% for enrolling in enrollings %}
-             <div class="col-md-10"> 
-                <div class="col-md-1 text-center">
-                    <p style="font-size: 22px;">{{ enrolling.id }}</p>
-                </diV>
-                <div class="col-md-2">
-                    <p style="font-size: 22px;">{{ enrolling.dateAdded|date("Y-m-d") }} </p>
-                </diV>
-                <div class="col-md-7">
-                    <p style="font-size: 22px;">
-                        <a href="{{ path('student_view', { id: enrolling.student.id } ) }}">       
-                            {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} 
-                        </a>
-                    </p> 
-                </div>   
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-9">
+                <article>
+                    <h2><span>{{ course.id }}</span> {{ course.title }}</h2>
+                    <p>{{ course.description }}</p>
+                    <p>Start Date: {{ course.startDate|date("Y-m-d") }}</p>
+                    <p>Finish Date: {{ course.finishDate|date("Y-m-d") }}</p> 
+                    <p>Price: {{ course.price }} BGN</p>
+                    <div>
+                        <a class="btn btn-success" href="{{ path('course_edit', {id: course.id}) }}">Edit</a>
+                        <a class="btn btn-danger" href="{{ path('course_delete', {id: course.id}) }}">Delete</a>
+                        <a class="btn btn-default" href="{{ path('invoices_index') }}">All Courses</a>
+                    </div>
+                </article>
             </div>
-        {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-12">  
+                <h1>Students in this course</h1>
+            </div>
+        </div>  
+        <div class="row students">
+            <div class="col-md-10">
+                <div class="col-md-1 text-center">
+                    <p>#</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Date</p>
+                </div>
+                <div class="col-md-7">
+                    <p>Student</p>
+                </div>
+            </div>
+        </div>
+        <div class="row students">
+            {% for enrolling in enrollings %}
+                <div class="col-md-10"> 
+                    <div class="col-md-1 text-center">
+                        <p>{{ enrolling.id }}</p>
+                    </diV>
+                    <div class="col-md-2">
+                        <p>{{ enrolling.dateAdded|date("Y-m-d") }} </p>
+                    </diV>
+                    <div class="col-md-7">
+                        <p>
+                            <a href="{{ path('student_view', { id: enrolling.student.id } ) }}">       
+                                {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} 
+                            </a>
+                        </p> 
+                    </div>   
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
 
 {% endblock %}
