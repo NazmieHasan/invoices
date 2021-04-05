@@ -6,23 +6,23 @@
         <div class="well">
             <form class="form-horizontal" action="{{ path('enrolling_create') }}" method="post">
                 <fieldset>
-                    <legend>Enrolling</legend>
+                    <legend>Ново записване</legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="enrolling_student">Student</label>
+                        <label class="col-sm-4 control-label" for="enrolling_student">Клиент</label>
                         <div class="col-sm-4 form-widget">
                             {{ form_widget(form.student) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="enrolling_course">Course</label>
+                        <label class="col-sm-4 control-label" for="enrolling_course">Курс</label>
                         <div class="col-sm-4 form-widget">
                             {{ form_widget(form.course) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" href="{{ path('all_enrollings') }}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a class="btn btn-default" href="{{ path('all_enrollings') }}">Отмени</a>
+                            <button type="submit" class="btn btn-primary">Запиши</button>
                         </div>
                     </div>
                     {{  form_row(form._token) }}

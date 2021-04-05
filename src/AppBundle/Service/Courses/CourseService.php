@@ -81,7 +81,7 @@ class CourseService implements CourseServiceInterface
         return $this->courseRepository->remove($course);
     }
 
-    public function findOneByTitle(string $title): ?Course
+    public function findOneByTitle($title): ?Course
     {
         return $this->courseRepository->findOneBy(['title' => $title]);
     }

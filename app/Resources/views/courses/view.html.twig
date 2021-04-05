@@ -8,20 +8,20 @@
                 <article>
                     <h2><span>{{ course.id }}</span> {{ course.title }}</h2>
                     <p>{{ course.description }}</p>
-                    <p>Start Date: {{ course.startDate|date("Y-m-d") }}</p>
-                    <p>Finish Date: {{ course.finishDate|date("Y-m-d") }}</p> 
-                    <p>Price: {{ course.price }} BGN</p>
+                    <p>Начална дата: {{ course.startDate|date("d.m.Y") }}</p>
+                    <p>Крайна дата: {{ course.finishDate|date("d.m.Y") }}</p> 
+                    <p>Цена: {{ course.price }}лв.</p>
                     <div>
-                        <a class="btn btn-success" href="{{ path('course_edit', {id: course.id}) }}">Edit</a>
-                        <a class="btn btn-danger" href="{{ path('course_delete', {id: course.id}) }}">Delete</a>
-                        <a class="btn btn-default" href="{{ path('invoices_index') }}">All Courses</a>
+                        <a class="btn btn-success" href="{{ path('course_edit', {id: course.id}) }}">Редактирай</a>
+                        <a class="btn btn-danger" href="{{ path('course_delete', {id: course.id}) }}">Изтрий</a>
+                        <a class="btn btn-default" href="{{ path('invoices_index') }}">Към всички курсове</a>
                     </div>
                 </article>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">  
-                <h1>Students in this course</h1>
+                <h1>Спъсък на записаните клиенти</h1>
             </div>
         </div>  
         <div class="row students">
@@ -30,10 +30,10 @@
                     <p>#</p>
                 </div>
                 <div class="col-md-2">
-                    <p>Date</p>
+                    <p>Дата</p>
                 </div>
                 <div class="col-md-7">
-                    <p>Student</p>
+                    <p>Клиент</p>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                         <p>{{ enrolling.id }}</p>
                     </diV>
                     <div class="col-md-2">
-                        <p>{{ enrolling.dateAdded|date("Y-m-d") }} </p>
+                        <p>{{ enrolling.dateAdded|date("d.m.Y") }} </p>
                     </diV>
                     <div class="col-md-7">
                         <p>

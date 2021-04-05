@@ -3,35 +3,34 @@
 {% block body_id 'login' %}
 
 {% block main %}
-
-    {% for msg in app.session.flashbag.get('info')  %}
-        <div class="alert alert-success" id="info">
-            {{ msg }}
-        </div>
-    {% endfor %}
     
     <div class="container body-content span=8 offset=2">
         <div class="well">
+            {% for msg in app.session.flashbag.get('info')  %}
+                <div class="alert alert-success" id="info">
+                    {{ msg }}
+                </div>
+            {% endfor %}
             <form name="authenticate" class="form-horizontal" action="{{ path('security_login') }}" method="post">
                 <fieldset>
-                    <legend>Login</legend>
+                    <legend>Вход</legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_email">Email</label>
+                        <label class="col-sm-4 control-label" for="user_email">Имейл</label>
                         <div class="col-sm-4">
-                            <input type="email" class="form-control" id="user_email" placeholder="Email" name="_username">
+                            <input type="email" class="form-control" id="user_email" placeholder="Имейл" name="_username">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="password">Password</label>
+                        <label class="col-sm-4 control-label" for="password">Парола</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="_password">
+                            <input type="password" class="form-control" id="password" placeholder="Парола" name="_password">
                         </div>
                     </div>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <button type="submit" class="btn btn-primary">Login</button>
-                            <a href="{{ path('user_register') }}" class="a-custom">OR REGISTER NOW</a>
+                            <button type="submit" class="btn btn-primary">Вход</button>
+                            <a href="{{ path('user_register') }}" class="a-custom">Регистрация</a>
                         </div>
                     </div>
                 </fieldset>

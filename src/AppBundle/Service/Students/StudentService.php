@@ -78,7 +78,7 @@ class StudentService implements StudentServiceInterface
         return $this->studentRepository->remove($student);
     }
 
-    public function findOneByPersonalNumber(string $personalNumber): ?Student
+    public function findOneByPersonalNumber($personalNumber): ?Student
     {
         return $this->studentRepository->findOneBy(['personalNumber' => $personalNumber]);
     }

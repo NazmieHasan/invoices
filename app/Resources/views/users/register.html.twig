@@ -6,48 +6,68 @@
 
     <div class="container body-content span=8 offset=2">
         <div class="well">
+            {% for msg in app.session.flashbag.get('errors')  %}
+                <div class="alert alert-danger">
+                    {{ msg }}
+                </div>
+            {% endfor %}
             <form class="form-horizontal" action="{{ path('user_register') }}" method="post">
                 <fieldset>
-                    <legend>Register</legend>
+                    <legend>Регистрация</legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_email">Email</label>
+                        <label class="col-sm-4 control-label" for="user_email">Имейл</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="user_email" placeholder="Email" name="user[email]">
+                            <input type="text" class="form-control" id="user_email" placeholder="Имейл" name="user[email]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.email) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_password_first">Password</label>
+                        <label class="col-sm-4 control-label" for="user_password_first">Парола</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="user[password][first]">
+                            <input type="password" class="form-control" id="user_password_first" placeholder="Парола" name="user[password][first]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.password.first) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_password_second">Confirm Password</label>
+                        <label class="col-sm-4 control-label" for="user_password_second">Повтори паролата</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="user_password_second" placeholder="Password" name="user[password][second]">
+                            <input type="password" class="form-control" id="user_password_second" placeholder="Повтори паролата" name="user[password][second]">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_firstName">First Name</label>
+                        <label class="col-sm-4 control-label" for="user_firstName">Име</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="user_firstName" placeholder="First Name" name="user[firstName]">
+                            <input type="text" class="form-control" id="user_firstName" placeholder="Име" name="user[firstName]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.firstName) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_fathersName">Father's Name</label>
+                        <label class="col-sm-4 control-label" for="user_fathersName">Бащино име</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="user_fathersName" placeholder="Farther's Name" name="user[fathersName]">
+                            <input type="text" class="form-control" id="user_fathersName" placeholder="Бащино име" name="user[fathersName]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.fathersName) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_lasttName">Last Name</label>
+                        <label class="col-sm-4 control-label" for="user_lasttName">Фамилно име</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="user_lastName" placeholder="Last Name" name="user[lastName]">
+                            <input type="text" class="form-control" id="user_lastName" placeholder="Фамилно име" name="user[lastName]">
+                        </div>
+                        <div class="form-errors">
+                            {{ form_errors(form.lastName) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="submit" class="btn btn-primary">Регистриране</button>
                         </div>
                     </div>
                     {{  form_row(form._token) }}

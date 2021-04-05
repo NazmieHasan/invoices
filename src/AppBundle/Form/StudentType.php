@@ -20,10 +20,7 @@ class StudentType extends AbstractType
             ->add('firstName', TextType::class)
             ->add('fathersName', TextType::class)
             ->add('lastName', TextType::class)
-            ->add('image', FileType::class,
-                [
-                    'data_class' => null
-                ]);
+            ->add('image', FileType::class);
     }/**
      * {@inheritdoc}
      */

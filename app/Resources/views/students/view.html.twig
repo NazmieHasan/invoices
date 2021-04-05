@@ -9,15 +9,15 @@
             </div>
             <div class="col-md-8">   
                 <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }} <span class="student-id">[{{ student.id }}]</span></h3>
-                <p class="personal-num">Personal Number: {{ student.personalNumber }}</p>
+                <p class="personal-num">ЕГН: {{ student.personalNumber }}</p>
+                <hr />
                 {% for enrolling in enrollings %}
-                    <hr />
                     <p>{{ enrolling.id }} {{ enrolling.dateAdded|date("Y-m-d") }}
                         <a href="{{ path('course_view', { id: enrolling.course.id } ) }}"> {{ enrolling.course.title }} </a>
                     </p>         
                     <hr />
                 {% endfor %}
-                <a class="btn btn-default" href="{{ path('all_students') }}">All Students</a>      
+                <a class="btn btn-default" href="{{ path('all_students') }}">Към всички студенти</a>      
             </div>
         </div>  
     </div>

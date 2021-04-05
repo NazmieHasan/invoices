@@ -24,10 +24,12 @@ class Student
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Regex(
-     *     pattern = "/^[1-9]{10}$/",
+     *     pattern = "/^[0-9]{10}$/",
      *     match=true,
-     *     message="The personal number can contain only 10 digits"
+     *     message="ЕГН-то трябва да съдържа само десет цифри"
      * )
      * @var string
      *
@@ -36,17 +38,13 @@ class Student
     private $personalNumber;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Length(
      *     min = 3,
-     *     max = 15,
-     *     minMessage="First name min length is 3",
-     *     maxMessage="First name max length is 15"
-     * )
-     *
-     * @Assert\Regex(
-     *     pattern = "/^[A-Z]{1}[a-z]+$/",
-     *     match=true,
-     *     message="First name must start with a capital letter, followed by lowercase letters"
+     *     max = 12,
+     *     minMessage="Минималната дължина на това поле е 3",
+     *     maxMessage="Максималната дължина на това поле е 12"
      * )
      *
      * @var string
@@ -56,17 +54,13 @@ class Student
     private $firstName;
     
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Length(
      *     min = 3,
-     *     max = 15,
-     *     minMessage="Father's name min length is 3",
-     *     maxMessage="Father's name max length is 15"
-     * )
-     *
-     * @Assert\Regex(
-     *     pattern = "/^[A-Z]{1}[a-z]+$/",
-     *     match=true,
-     *     message="Father's name must start with a capital letter, followed by lowercase letters"
+     *     max = 12,
+     *     minMessage="Минималната дължина на това поле е 3",
+     *     maxMessage="Максималната дължина на това поле е 12"
      * )
      *
      * @var string
@@ -76,17 +70,13 @@ class Student
     private $fathersName;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Length(
      *     min = 3,
-     *     max = 15,
-     *     minMessage="Last name min length is 3",
-     *     maxMessage="Last name max length is 15"
-     * )
-     *
-     * @Assert\Regex(
-     *     pattern = "/^[A-Z]{1}[a-z]+$/",
-     *     match=true,
-     *     message="Last name must start with a capital letter, followed by lowercase letters"
+     *     max = 12,
+     *     minMessage="Минималната дължина на това поле е 3",
+     *     maxMessage="Максималната дължина на това поле е 12"
      * )
      *
      * @var string
@@ -96,14 +86,16 @@ class Student
     private $lastName;
     
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\File(
      *     mimeTypes = {"image/jpeg", "image/jpg"},
-     *     mimeTypesMessage = "File type must be only jpeg or jpg with max size 1MB"
+     *     mimeTypesMessage = "Снимката може да е jpeg или jpg с максимален размер 1MB"
      * )
      *
      * @Assert\File(
      *     maxSize = "1024k",
-     *     maxSizeMessage = "File type must be only jpeg or jpg with max size 1MB"
+     *     maxSizeMessage = "Снимката може да е jpeg или jpg с максимален размер 1MB"
      * )
      *
      * @var string
@@ -115,7 +107,7 @@ class Student
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Enrolling", mappedBy="students")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Enrolling", mappedBy="student")
      */
     private $enrollings;
 
@@ -203,7 +195,7 @@ class Student
     }
 
     /**
-     * Get firstName
+     * Get fathersName
      *
      * @return string
      */
@@ -256,7 +248,7 @@ class Student
     /**
      * @return ArrayCollection
      */
-    public function getEnrollings()
+    public function getEnrollings(): ArrayCollection
     {
         return $this->enrollings;
     }
@@ -270,4 +262,3 @@ class Student
     } 
     
 }
-

@@ -12,47 +12,47 @@
         <div class="well">
             <form class="form-horizontal" action="{{ path('course_edit', {id: course.id}) }}" method="post">
                 <fieldset>
-                    <legend>Edit Course</legend>
+                    <legend>Редактиране на курс</legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_title">Title</label>
+                        <label class="col-sm-4 control-label" for="course_title">Жаглавие</label>
                         <div class="col-sm-4 ">
                             <input type="text" class="form-control" id="course_title" name="course[title]" value="{{ course.title }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_description">Description</label>
+                        <label class="col-sm-4 control-label" for="course_description">Описание</label>
                         <div class="col-sm-4 ">
                             <textarea class="form-control" rows="6" id="course_description" name="course[description]">{{ course.description }}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_startDate">Start Date</label>
+                        <label class="col-sm-4 control-label" for="course_startDate">Начална дата</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="course_startDate" name="course[startDate]" value="{{ course.startDate }}">
+                            <input type="text" class="form-control" id="course_startDate" name="course[startDate]" value="{{ course.startDate|date("d.m.Y") }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_finishDate">Finish Date</label>
+                        <label class="col-sm-4 control-label" for="course_finishDate">Крайна дата</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="course_finishDate" name="course[finishDate]" value="{{ course.finishDate }}">
+                            <input type="text" class="form-control" id="course_finishDate" name="course[finishDate]" value="{{ course.finishDate|date("d.m.Y") }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_price">Price in BGN</label>
+                        <label class="col-sm-4 control-label" for="course_price">Цена</label>
                         <div class="col-sm-4 ">
                             <input type="text" class="form-control" id="course_price" name="course[price]" value="{{ course.price }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_priceText">Price Text</label>
+                        <label class="col-sm-4 control-label" for="course_priceText">Цената словом</label>
                         <div class="col-sm-4 ">
                             <input type="text" class="form-control" id="course_priceText" name="course[priceText]" value="{{ course.priceText }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" href="{{ path('invoices_index') }}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a class="btn btn-default" href="{{ path('invoices_index') }}">Отмени</a>
+                            <button type="submit" class="btn btn-primary">Редактирай</button>
                         </div>
                     </div>
                     {{  form_row(form._token) }}

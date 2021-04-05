@@ -9,14 +9,14 @@
     {% endfor %}
     
     <div class="container body-content">
-        <a class="btn btn-primary" href="{{ path('course_create') }}">Create New Course</a>
+        <a class="btn btn-primary" href="{{ path('course_create') }}">Създай нов курс</a>
         <div class="row">
             {% for course in pagination %}
             <div class="col-md-6">
                 <div class="home-col">
                     <a class="course-title" href="{{ path('course_view', { id: course.id } ) }}">{{ course.title }}</a>
                     <p>{{ course.description }}</p>
-                    <a class="btn btn-primary" href="{{ path('course_view', {id: course.id}) }}">Read more &raquo;</a> 
+                    <a class="btn btn-primary" href="{{ path('course_view', {id: course.id}) }}">Детайли &raquo;</a> 
                 </div>    
             </div>
            {% endfor %}

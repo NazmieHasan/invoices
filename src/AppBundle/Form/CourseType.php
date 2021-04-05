@@ -21,14 +21,14 @@ class CourseType extends AbstractType
             ->add('startDate', DateType::class,
                 [
                     'widget' => 'single_text',
-                    'format' => 'yyyy-mm-dd',
-                    'invalid_message' => "Invalid date format! Try again with 'YYYY-MM-DD'",
+                    'format' => 'dd.MM.yyyy',
+                    'invalid_message' => "Невалидна дата! Моля, опитайте с 'ДД.ММ.ГГГГ'",
                 ])
             ->add('finishDate', DateType::class,
                 [
                     'widget' => 'single_text',
-                    'format' => 'yyyy-mm-dd',
-                    'invalid_message' => "Invalid date format! Try again with 'YYYY-MM-DD'",
+                    'format' => 'dd.MM.yyyy',
+                    'invalid_message' => "Невалидна дата! Моля, опитайте с 'ДД.ММ.ГГГГ'",
                 ])
             ->add('price', TextType::class)
             ->add('priceText', TextType::class);

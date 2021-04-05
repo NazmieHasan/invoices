@@ -75,7 +75,7 @@ class StudentController extends Controller
                 ->studentService->findOneByPersonalNumber($form['personalNumber']->getData())
                 ->getPersonalNumber();
 
-            $this->addFlash("errors", "Personal number $personalNumber already taken!");
+            $this->addFlash("errors", "ЕГН $personalNumber вече съществува!");
             return $this->render('students/create.html.twig',
                 [
                     'form' => $form->createView()
@@ -84,7 +84,7 @@ class StudentController extends Controller
 
         if ($form->isValid()) {
             $this->studentService->save($student);
-            $this->addFlash("info", "Student created successfully!");
+            $this->addFlash("info", "Клиентът е създаден успешно!");
             return $this->redirectToRoute("all_students");
         }
 
@@ -134,7 +134,7 @@ class StudentController extends Controller
         $pagination = $paginator->paginate(
         $students, /* query NOT result */
         $request->query->getInt('page', 1), /*page number*/
-        4 /*limit per page*/
+        6 /*limit per page*/
         );
         
         return $this->render('students/all.html.twig',
@@ -182,11 +182,11 @@ class StudentController extends Controller
 
         if ($form->isValid()) {
             $this->studentService->update($student);
-            $this->addFlash("info", "Student editing successfully!");
+            $this->addFlash("info", "Клиентът е редактиран успешно!");
             return $this->redirectToRoute("all_students");
         }
 
-        $this->addFlash("errors", "Try again edit!");
+        $this->addFlash("errors", "Възникна грешка! Моля, опитайте отново!");
         return $this->render('students/edit.html.twig',
             [
                 'student' => $student,
@@ -209,7 +209,7 @@ class StudentController extends Controller
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
         $this->studentService->delete($student);
-        $this->addFlash("info", "Student delete successfully!");
+        $this->addFlash("info", "Клиентът е изтрит успешно!");
         return $this->redirectToRoute("all_students");
     }
 
@@ -221,16 +221,20 @@ class StudentController extends Controller
     {
         /** @var UploadedFile $file */
         $file = $form['image']->getData();
+        
+        if ($file !== null) {
 
-        $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
-        if ($file) {
-            $file->move(
-                $this->getParameter('students_directory'),
-                $fileName
-            );
-            $student->setImage($fileName);
+            if ($file) {
+                $file->move(
+                    $this->getParameter('students_directory'),
+                    $fileName
+                );
+                $student->setImage($fileName);
+            }
         }
+        
     }
 
 }

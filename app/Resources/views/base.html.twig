@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="bg">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -37,33 +37,33 @@
                         {% if app.user %}
                             <li>
                                 <a href="{{ path('invoices_index') }}" class="navbar-brand">
-                                    Home
+                                    Начало
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('all_students') }}" class="navbar-brand">
-                                    Students
+                                    Клиенти
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('all_enrollings') }}" class="navbar-brand">
-                                    Enrollings / Invoices
+                                    Записвания / Фактури
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('security_logout') }}" class="navbar-brand">
-                                    Logout
+                                    Изход
                                 </a>
                             </li>
                         {% else %}
                             <li>
                                 <a href="{{ path('user_register') }}">
-                                    REGISTER
+                                    Регистрация
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('security_login') }}">
-                                    LOGIN
+                                    Вход
                                 </a>
                             </li>
                         {% endif %}

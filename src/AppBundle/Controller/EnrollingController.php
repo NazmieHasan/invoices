@@ -58,7 +58,7 @@ class EnrollingController extends Controller
 
         if ($form->isValid()) {
             $this->enrollingService->save($enrolling);
-            $this->addFlash("info", "Enrolling is successfully!");
+            $this->addFlash("info", "Записването е успешно!");
             return $this->redirectToRoute("all_enrollings");
         }
 
@@ -84,7 +84,7 @@ class EnrollingController extends Controller
         $pagination = $paginator->paginate(
         $enrollings, /* query NOT result */
         $request->query->getInt('page', 1), /*page number*/
-        3 /*limit per page*/
+        8 /*limit per page*/
         );
         
         return $this->render('enrollings/all.html.twig',

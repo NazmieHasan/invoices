@@ -11,45 +11,45 @@
             {% endfor %}
             <form class="form-horizontal" action="{{ path('course_create') }}" method="POST">
                 <fieldset>
-                <legend>New Course</legend>
+                <legend>Създаване на нов курс</legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_title">Course Title</label>
+                        <label class="col-sm-4 control-label" for="course_title">Заглавие</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_title" placeholder="Course Title" name="course[title]">
+                            <input type="text" class="form-control" id="course_title" placeholder="Заглавие" name="course[title]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.title) }}
                         </div>
                     </div>
                     <div class="form-group"> 
-                        <label class="col-sm-4 control-label" for="course_description">Description</label>
+                        <label class="col-sm-4 control-label" for="course_description">Описание</label>
                         <div class="col-sm-4">
-                            <textarea class="form-control" rows="6" id="course_description" placeholder="Description" name="course[description]"></textarea>
+                            <textarea class="form-control" rows="6" id="course_description" placeholder="Описание" name="course[description]"></textarea>
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.description) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_startDate">Start Date</label>
+                        <label class="col-sm-4 control-label" for="course_startDate">Начална дата</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_startDate" placeholder="YYYY-MM-DD" name="course[startDate]">
+                            <input type="text" class="form-control" id="course_startDate" placeholder="ДД.ММ.ГГГГ" name="course[startDate]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.startDate) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_finishDate">Finish Date</label>
+                        <label class="col-sm-4 control-label" for="course_finishDate">Крайна дата</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_finishDate" placeholder="YYYY-MM-DD" name="course[finishDate]">
+                            <input type="text" class="form-control" id="course_finishDate" placeholder="ДД.ММ.ГГГГ" name="course[finishDate]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.finishDate) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_price">Price in BGN</label>
+                        <label class="col-sm-4 control-label" for="course_price">Цена в левове</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="course_price" placeholder="000.00" name="course[price]">
                         </div>
@@ -58,9 +58,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="course_priceText">Price Text</label>
+                        <label class="col-sm-4 control-label" for="course_priceText">Цената словом</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_priceText" placeholder="Price Text" name="course[priceText]">
+                            <input type="text" class="form-control" id="course_priceText" placeholder="Цената словом" name="course[priceText]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.priceText) }}
@@ -69,8 +69,8 @@
                     {{ form_row(form._token) }}
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" href="{{ path('invoices_index') }}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <a class="btn btn-default" href="{{ path('invoices_index') }}">Отмени</a>
+                            <button type="submit" class="btn btn-primary">Създай</button>
                         </div>
                     </div>
                 </fieldset>

@@ -11,47 +11,47 @@
             {% endfor %}
             <form class="form-horizontal" enctype="multipart/form-data" action="{{ path('student_create') }}" method="POST">
                 <fieldset>
-                    <legend>New Student</legend>
+                    <legend>Нов клиент</legend>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="student_personalNumber">Personal Number</label>
+                        <label class="col-sm-4 control-label" for="student_personalNumber">ЕГН</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="student_personalNumber" placeholder="Personal Number" name="student[personalNumber]">
+                            <input type="text" class="form-control" id="student_personalNumber" placeholder="ЕГН" name="student[personalNumber]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.personalNumber) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="student_firstName">First Name</label>
+                        <label class="col-sm-4 control-label" for="student_firstName">Име</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="student_firstName" placeholder="First Name" name="student[firstName]">
+                            <input type="text" class="form-control" id="student_firstName" placeholder="Име" name="student[firstName]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.firstName) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="student_fathersName">Father's Name</label>
+                        <label class="col-sm-4 control-label" for="student_fathersName">Бащино име</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="student_fathersName" placeholder="Farther's Name" name="student[fathersName]">
+                            <input type="text" class="form-control" id="student_fathersName" placeholder="Бащино име" name="student[fathersName]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.fathersName) }}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="student_lastName">Last Name</label>
+                        <label class="col-sm-4 control-label" for="student_lastName">Фамилно име</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="student_LastName" placeholder="Last Name" name="student[lastName]">
+                            <input type="text" class="form-control" id="student_LastName" placeholder="Фамилно име" name="student[lastName]">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.lastName) }}
                         </div>
                     </div> 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="student_image">Upload Image</label>
+                        <label class="col-sm-4 control-label" for="student_image">Снимка</label>
                         <div class="col-sm-4">
-                            <input accept=".jpeg, .jpg" type="file" class="form-control" id="student_image" placeholder="Upload Image" name="student[image]">
+                            <input accept=".jpeg, .jpg" type="file" class="form-control" id="student_image" placeholder="Качи снимка" name="student[image]">
                         </div>
                          <div class="form-errors">
                             {{ form_errors(form.image) }}
@@ -60,8 +60,8 @@
                     {{ form_row(form._token) }}
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" href="{{ path('all_students') }}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <a class="btn btn-default" href="{{ path('all_students') }}">Отмени</a>
+                            <button type="submit" class="btn btn-primary">Запиши</button>
                         </div>
                     </div>
                 </fieldset>

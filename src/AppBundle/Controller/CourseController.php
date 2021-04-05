@@ -73,7 +73,7 @@ class CourseController extends Controller
                 ->courseService->findOneByTitle($form['title']->getData())
                 ->getTitle();
 
-            $this->addFlash("errors", "Title $title already taken!");
+            $this->addFlash("errors", "Заглавието $title вече съществува!");
             return $this->render('courses/create.html.twig',
                 [
                     'form' => $form->createView()
@@ -82,7 +82,7 @@ class CourseController extends Controller
 
         if ($form->isValid()) {
             $this->courseService->save($course);
-            $this->addFlash("info", "Course created successfully!");
+            $this->addFlash("info", "Курсът е създаден успешно!");
             return $this->redirectToRoute("invoices_index");
         }
 
@@ -155,11 +155,11 @@ class CourseController extends Controller
 
         if ($form->isValid()) {
             $this->courseService->update($course);
-            $this->addFlash("info", "Course editing successfully!");
+            $this->addFlash("info", "Курсът е редактиран успешно!");
             return $this->redirectToRoute("invoices_index");
         }
 
-        $this->addFlash("errors", "Try again edit!");
+        $this->addFlash("errors", "Възникна грешка! Моля, опитайте отново!");
         return $this->render('courses/edit.html.twig',
             [
                 'course' => $course,
@@ -183,7 +183,7 @@ class CourseController extends Controller
         $form = $this->createForm(CourseType::class, $course);
         $form->handleRequest($request);
         $this->courseService->delete($course);
-        $this->addFlash("info", "Course delete successfully!");
+        $this->addFlash("info", "Курсът е изтрит успешно!");
         return $this->redirectToRoute("invoices_index");
     }
     

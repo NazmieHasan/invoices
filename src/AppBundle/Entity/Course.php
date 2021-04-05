@@ -24,17 +24,13 @@ class Course
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Length(
      *     min = 10,
      *     max = 40,
-     *     minMessage="Title min length is 10",
-     *     maxMessage="Title max length is 40"
-     * )
-     *
-     * @Assert\Regex(
-     *     pattern = "/^[A-Za-z0-9-+ ]+$/",
-     *     match=true,
-     *     message="Title contains letters, digit, space, '+' and '-'"
+     *     minMessage="Минималната дължина на заглавието е 10",
+     *     maxMessage="Максималната дължина на заглавието е 40"
      * )
      *
      * @var string
@@ -44,17 +40,13 @@ class Course
     private $title;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Length(
      *     min = 20,
-     *     max = 100,
-     *     minMessage="Description min length is 20",
-     *     maxMessage="Description max length is 100"
-     * )
-     *
-     * @Assert\Regex(
-     *     pattern = "/^[A-Za-z0-9.!?, ]+$/",
-     *     match=true,
-     *     message="Description contains letters, digit, '.', '!', '?', ',' and space"
+     *     max = 200,
+     *     minMessage="Минималната дължина на описанието е 20",
+     *     maxMessage="Максималната дължина на описанието е 200"
      * )
      *
      * @var string
@@ -64,6 +56,8 @@ class Course
     private $description;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Date
      *
      * @var \DateTime
@@ -73,6 +67,8 @@ class Course
     private $startDate;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Date
      *
      * @var \DateTime
@@ -84,10 +80,12 @@ class Course
     /**
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Regex(
      *     pattern = "/^[0-9]{3,4}.[0-9]{2}$/",
      *     match=true,
-     *     message="The price must be a three-digit or four-digit floating point number to 2 digits after the floating point"
+     *     message="Цената може да бъде трицифрено или четирицифрено число, закръглено до втория знак"
      * )
      *
      * @var string
@@ -97,17 +95,19 @@ class Course
     private $price;
     
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
      * @Assert\Length(
      *     min = 10,
      *     max = 40,
-     *     minMessage="Price text min length is 10",
-     *     maxMessage="Price text max length is 40"
+     *     minMessage="Минималната дължина на цената словом е 10",
+     *     maxMessage="Максималната дължина на цената словом е 40"
      * )
-     *
+      *
      * @Assert\Regex(
-     *     pattern = "/^[A-Za-z0. ]+$/",
+     *     pattern = "/^[А-Яа-я ]+$/",
      *     match=true,
-     *     message="Price text contains letters, '.' and space"
+     *     message="Цената словом може да съдържа само букви и интервал"
      * )
      *
      * @var string
@@ -119,7 +119,7 @@ class Course
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Enrolling", mappedBy="courses")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Enrolling", mappedBy="course")
      */
     private $enrollings;
 
@@ -290,7 +290,7 @@ class Course
     /**
      * @return ArrayCollection
      */
-    public function getEnrollings()
+    public function getEnrollings(): ArrayCollection
     {
         return $this->enrollings;
     }

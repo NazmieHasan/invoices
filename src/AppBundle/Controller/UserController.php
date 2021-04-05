@@ -52,17 +52,12 @@ class UserController extends Controller
                 ->userService->findOneByEmail($form['email']->getData())
                 ->getEmail();
 
-            $this->addFlash("errors", "Email  $email already taken!");
-            return $this->returnRegisterView($user);
-        }
-
-        if( ( $form['password']['first']->getData() ) !== ( $form['password']['second']->getData() ) ) {
-            $this->addFlash("errors", "Password mismatch!");
+            $this->addFlash("errors", "Имейлът  $email вече съществува!");
             return $this->returnRegisterView($user);
         }
 
         if ($form->isValid()) {
-            $this->addFlash("info", "You are registered successfully! Login in system.");
+            $this->addFlash("info", "Успешна регистрация! Вход в системата.");
             $this->userService->save($user);
             return $this->redirectToRoute("security_login");
         }

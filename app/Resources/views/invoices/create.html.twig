@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="bg">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Junior Hackathon Task - Invoice</title>
     <style>
-        body {
+         html {
             margin: 0;
-            padding: 20px;
-            font-family: sans-serif;
-            color: #333333;
+            padding: 0;
+        }
+        body {
+            padding: 50px 20px;
+            font-size: 12px;
+            font-family: Dejavu Sans;
         }
         table {
             margin-top: 20px;
@@ -25,6 +28,7 @@
         }
         .title h1 {
             margin: 0;
+            font-size: 30px;
             font-weight: bold;
             text-align: center;
         }
@@ -52,7 +56,7 @@
             margin-left: 30px;
         }
         .table-tax {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-weight: bold;
         }
         .table-tax td {
@@ -71,10 +75,10 @@
         }
         .law {
             margin-top: 40px;
-            font-size: 14px;
+            font-size: 10px;
         }
         .invoice-info {
-            margin-top: 140px;
+            margin-top: 200px;
         }
     </style>
 </head>
@@ -82,49 +86,49 @@
 
     <div class="container">
         <div class="title">
-            <h1>Faktura Original</h1>
+            <h1>Фактура Оригинал</h1>
         </div>
         <div class="num-and-data">
-            <p>Nomer: <span>000000{{enrolling.id}}</span></p>
-            <p>Data: <span>{{ enrolling.dateAdded|date("Y-m-d") }}</span></p>   
+            <p>Номер: <span>000000{{enrolling.id}}</span></p>
+            <p>Дата: <span>{{ enrolling.dateAdded|date("d.m.Y") }}</span></p>   
         </div>
         <table class="table-users">
            <tr>
                <td>
-                   <p>Poluchatel: {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
-                   <p>DDS N:</p>
-                   <p>Ident. N:</p>
-                   <p>Grad Varna</p>
-                   <p>Adres </p> 
-                   <p>MOL {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} </p>
-                   <p>Telefon</p>  
+                   <p>Получател {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
+                   <p>ДДС №</p>
+                   <p>Идент. №</p>
+                   <p>Град Варна</p>
+                   <p>Адрес </p> 
+                   <p>МОЛ {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
+                   <p>Телефон</p>  
                </td>
                <td>
-                   <p>Dostavchik: Driving Courses</p>
-                   <p>DDS N:</p>
-                   <p>Ident. N: 01010101</p>
-                   <p>Grad Varna</p>
-                   <p>Adres ul.Nikola Vapcarov</p> 
-                   <p>MOL STEFAN KIRILOV STEFANOV</p>
-                   <p>Telefon</p>
+                   <p>Доставчик Драйвинг 2021 ООД</p>
+                   <p>ДДС №</p>
+                   <p>Идент. № 01010101</p>
+                   <p>Град Варна</p>
+                   <p>Адрес ул.Никола Вапцаров</p> 
+                   <p>МОЛ Стефан Кирилов Стефанов</p>
+                   <p>Телефон</p>
                </td>
            </tr>
         </table>
         <table class="table-invoice">
            <tr>
-               <th style="width: 5%;">N</th>
-               <th style="width: 10%;">Kod</th>
-               <th style="width: 45%;">Naimenivanie na stokata / uslugata</th>
-               <th style="width: 10%;">Mqrka</th>
-               <th style="width: 10%;">Kolich.</th>
-               <th style="width: 10%;">Cena</th>
-               <th style="width: 10%;">Suma</th>
+               <th style="width: 5%;">№</th>
+               <th style="width: 10%;">Код</th>
+               <th style="width: 45%;">Наименование на стоката / услугата</th>
+               <th style="width: 10%;">Мярка</th>
+               <th style="width: 10%;">Колич.</th>
+               <th style="width: 10%;">Цена</th>
+               <th style="width: 10%;">Сума</th>
            </tr>
            <tr>
                <td style="width: 5%; text-align: center;">1</td>
                <td style="width: 10%;"></td>
                <td style="width: 45%;">{{ enrolling.course.title}}</td>
-               <td style="width: 10%; text-align: center;">br.</td>
+               <td style="width: 10%; text-align: center;">бр.</td>
                <td style="width: 10%; text-align: right;">1.00</td>
                <td style="width: 10%; text-align: right;">{{ enrolling.course.price }}</td>
                <td style="width: 10%; text-align: right;">{{ enrolling.course.price }}</td>
@@ -135,9 +139,9 @@
                 <td style="width: 55%;">
                 </td>
                 <td style="width: 30%;">
-                    <p>Danichna osnova:</p>
-                    <p>DDS 0%:</p>
-                    <p>Suma za plashtane:</p>
+                    <p>Данъчна основа:</p>
+                    <p>ДДС 0%:</p>
+                    <p>Сума за плащане:</p>
                 </td>
                 <td style="width: 15%;">
                     <p>{{ enrolling.course.price}}</p>
@@ -147,40 +151,40 @@
             </tr>
         </table>
         <div class="price-text">
-            <p><span>Slovom:</span> {{ enrolling.course.priceText}}</p>
+            <p><span>Словом:</span> {{ enrolling.course.priceText}}</p>
         </div>
         <table class="table-bank">
            <tr>
                <td style="width: 60%;">
-                   <p>Data na danichnoto sibitie: {{ enrolling.dateAdded|date("Y-m-d") }}</p>
-                   <p>Osnovanie za nenachisl. na DDS:</p>
-                   <p>Opisanie na sdelkata:</p>
-                   <p>Mqsto na sdelkata: Varna</p>  
+                   <p>Дата на данъчното събитие: {{ enrolling.dateAdded|date("d.m.Y") }}</p>
+                   <p>Основание за неначисл. на ДДС:</p>
+                   <p>Описание на сделката:</p>
+                   <p>Място на сделката: Варна</p>  
                </td>
                <td style="width: 40%;">
-                   <p>Plashtane: V broi</p>
+                   <p>Плащане: В брой</p>
                    <p>IBAN:</p> 
-                   <p>Banka:</p>
-                   <p>Bankov cod:</p>
+                   <p>Банка:</p>
+                   <p>Банков код:</p>
                </td>
            </tr>
         </table>
         <table class="table-users-name">
             <tr>
-                <td style="width: 55% padding: 5px;">
-                    <p>Poluchil: {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
+                <td style="width: 50% padding: 5px; text-aligh: left;">
+                    <p>Получил: {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }}</p>
                 </td>
-                <td style="width: 45%;">
-                    <p>Sistavil: <span>{{ app.user.firstName }} {{ app.user.fathersName }} {{ app.user.lastName }}</span></p>
+                <td style="width: 40%; text-align: right;">
+                    <p>Съставил: <span>{{ app.user.firstName }} {{ app.user.fathersName }} {{ app.user.lastName }}</span></p>
                 </td>
             </tr>
         </table>
         <div class="law">
-            <p>Siglasno 4l. 6, al. 1 ot Zakona za S4etovodstvoto, 4l. 114 ot ZDDS i 4l. 78 ot PPZDDS pechatit i podpisit ne sa zadiljitelni rekviziti viv fakturata.</p>
+            <p>Съгласно чл. 6, ал. 1 от Закона за Счетоводството, чл. 114 от ЗДДС и чл. 78 от ППЗДДС печатът и подписът не са задължителни реквизити във фактурата.</p>
         </div>
         <div class="invoice-info">
             <hr />
-            <p>Driving Courses, telefon: 123456987, http://www.courses.com</p>
+            <p>Драйвинг 2021 ООД, гр.Варна</p>
         </div> 
     </div>
 

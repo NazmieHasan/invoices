@@ -41,7 +41,7 @@ class UserService implements UserServiceInterface
         return $this->userRepository->insert($user);
     }
 
-    public function findOneByEmail(string $email): ?User
+    public function findOneByEmail($email): ?User
     {
         return $this->userRepository->findOneBy(['email' => $email]);
     }

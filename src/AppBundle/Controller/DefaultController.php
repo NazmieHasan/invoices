@@ -31,7 +31,7 @@ class DefaultController extends Controller
         $pagination = $paginator->paginate(
         $courses, /* query NOT result */
         $request->query->getInt('page', 1), /*page number*/
-        2 /*limit per page*/
+        4 /*limit per page*/
         );
         
         return $this->render('default/index.html.twig',

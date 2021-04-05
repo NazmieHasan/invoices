@@ -2,9 +2,9 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -24,6 +24,13 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
+     * @Assert\Email(
+     *     message="Невалиден имейл",
+     *     checkMX=false
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
@@ -31,6 +38,21 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
+     * @Assert\Length(
+     *     min = 5,
+     *     max = 15,
+     *     minMessage="Минималната дължина на това поле е 5",
+     *     maxMessage="Максималната дължина на това поле е 15"
+     * )
+     *
+     *  * @Assert\Regex(
+     *     pattern = "/^[А-яа-я0-9]+$/",
+     *     match=true,
+     *     message="Паролата може да съдържа само букви и цифри"
+     * )*
+     
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -38,6 +60,15 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 12,
+     *     minMessage="Минималната дължина на това поле е 3",
+     *     maxMessage="Максималната дължина на това поле е 12"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
@@ -45,6 +76,15 @@ class User implements UserInterface
     private $firstName;
     
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 12,
+     *     minMessage="Минималната дължина на това поле е 3",
+     *     maxMessage="Максималната дължина на това поле е 12"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="fathersName", type="string", length=255)
@@ -52,6 +92,15 @@ class User implements UserInterface
     private $fathersName;
 
     /**
+     * @Assert\NotBlank(message="Това поле не може да бъде празно")
+     *
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 12,
+     *     minMessage="Минималната дължина на това поле е 3",
+     *     maxMessage="Максималната дължина на това поле е 12"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)

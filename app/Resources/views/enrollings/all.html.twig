@@ -8,28 +8,28 @@
         </div>
     {% endfor %} 
       
-    <a class="btn btn-primary" href="{{ path('enrolling_create') }}">New Enrolling</a>
+    <a class="btn btn-primary" href="{{ path('enrolling_create') }}">Ново записване</a>
     
     <div class="container body-content container-enrollings">
         <div class="row">
             <div class="col-md-12 col-title">
                 <div class="col-md-2">    
-                    <h4># Date Added</h4>
+                    <h4># Дата на зап.</h4>
                 </div>
                 <div class="col-md-2">
-                    <h4>Student</h4>
+                    <h4>Клиент</h4>
                 </div>
                 <div class="col-md-2">    
-                    <h4>Personal &#x2116;</h4>
+                    <h4>ЕГН</h4>
                 </div>
                 <div class="col-md-1">
-                    <h4>Image</h4>
+                    <h4>Снимка</h4>
                 </div>
                 <div class="col-md-3">    
-                    <h4>Course</h4>
+                    <h4>Курс</h4>
                 </div> 
                 <div class="col-md-2">    
-                    <h4>Invoice</h4>
+                    <h4>Фактура</h4>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
             {% for enrolling in pagination %}
                 <div class="col-md-12 col-enrollings">
                     <div class="col-md-2">         
-                        <h4>{{ enrolling.id }} {{ enrolling.dateAdded|date("Y-m-d") }}</h4>
+                        <h4>{{ enrolling.id }} {{ enrolling.dateAdded|date("d.m.Y") }}</h4>
                     </div>
                     <div class="col-md-2">
                         <h4>{{ enrolling.student.firstName }} {{ enrolling.student.lastName }}</h4>
@@ -56,8 +56,8 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                       <p><a href="{{ path('view_invoice', {id: enrolling.id}) }}" target=_blank>View</a></p>
-                       <a class="btn btn-danger" href="{{ path('download_invoice', {id: enrolling.id}) }}">Download</a>  
+                       <p><a href="{{ path('view_invoice', {id: enrolling.id}) }}" target=_blank>Преглед</a></p>
+                       <a class="btn btn-danger" href="{{ path('download_invoice', {id: enrolling.id}) }}">Изтегли</a>  
                     </div>  
                 </div>
             {% endfor %}
