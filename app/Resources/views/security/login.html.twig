@@ -4,7 +4,7 @@
 
 {% block main %}
     
-    <div class="container body-content span=8 offset=2">
+    <div class="container body-content span=8 offset=2 login-container">
         <div class="well">
             {% for msg in app.session.flashbag.get('info')  %}
                 <div class="alert alert-success" id="info">

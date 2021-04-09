@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\GreaterThan;
+use Symfony\Component\Validator\Constraints\GreaterThanValidator;
 
 /**
  * Course
@@ -71,6 +73,8 @@ class Course
      *
      * @Assert\Date
      *
+     * @Assert\GreaterThan(propertyPath="startDate", message="Крайната дата трябва да бъде по-голяма от началната дата")
+     *
      * @var \DateTime
      *
      * @ORM\Column(name="finishDate", type="date")
@@ -105,7 +109,7 @@ class Course
      * )
       *
      * @Assert\Regex(
-     *     pattern = "/^[А-Яа-я ]+$/",
+     *     pattern = "/^[А-Яа-я\w\s]+/",
      *     match=true,
      *     message="Цената словом може да съдържа само букви и интервал"
      * )

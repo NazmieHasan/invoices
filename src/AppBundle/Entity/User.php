@@ -48,7 +48,7 @@ class User implements UserInterface
      * )
      *
      *  * @Assert\Regex(
-     *     pattern = "/^[А-Яа-я0-9]+$/",
+     *     pattern = "/^[A-Za-z0-9]+$/",
      *     match=true,
      *     message="Паролата може да съдържа само букви и цифри"
      * )*
