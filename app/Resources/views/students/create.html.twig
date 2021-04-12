@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="student_personalNumber">ЕГН</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="student_personalNumber" placeholder="ЕГН" name="student[personalNumber]">
+                            <input type="text" class="form-control" id="student_personalNumber" placeholder="ЕГН" name="student[personalNumber]" value="{{ (form.personalNumber.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.personalNumber) }}
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="student_firstName">Име</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="student_firstName" placeholder="Име" name="student[firstName]">
+                            <input type="text" class="form-control" id="student_firstName" placeholder="Име" name="student[firstName]" value="{{ (form.firstName.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.firstName) }}
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="student_fathersName">Бащино име</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="student_fathersName" placeholder="Бащино име" name="student[fathersName]">
+                            <input type="text" class="form-control" id="student_fathersName" placeholder="Бащино име" name="student[fathersName]" value="{{ (form.fathersName.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.fathersName) }}
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="student_lastName">Фамилно име</label>
                         <div class="col-sm-4 ">
-                            <input type="text" class="form-control" id="student_LastName" placeholder="Фамилно име" name="student[lastName]">
+                            <input type="text" class="form-control" id="student_LastName" placeholder="Фамилно име" name="student[lastName]" value="{{ (form.lastName.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.lastName) }}

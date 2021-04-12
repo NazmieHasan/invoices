@@ -109,7 +109,7 @@ class Course
      * )
       *
      * @Assert\Regex(
-     *     pattern = "/^[А-Яа-я\w\s]+/",
+     *     pattern = "/^[А-Яа-я\s]+/",
      *     match=true,
      *     message="Цената словом може да съдържа само букви и интервал"
      * )

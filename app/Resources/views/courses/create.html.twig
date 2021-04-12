@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="course_title">Заглавие</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_title" placeholder="Заглавие" name="course[title]">
+                            <input type="text" class="form-control" id="course_title" placeholder="Заглавие" name="course[title]" value="{{ (form.title.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.title) }}
@@ -24,7 +24,7 @@
                     <div class="form-group"> 
                         <label class="col-sm-4 control-label" for="course_description">Описание</label>
                         <div class="col-sm-4">
-                            <textarea class="form-control" rows="6" id="course_description" placeholder="Описание" name="course[description]"></textarea>
+                            <textarea class="form-control" rows="6" id="course_description" placeholder="Описание" name="course[description]">{{ (form.description.vars.value )}}</textarea>
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.description) }}
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="course_startDate">Начална дата</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_startDate" placeholder="ДД.ММ.ГГГГ" name="course[startDate]">
+                            <input type="text" class="form-control" id="course_startDate" placeholder="ДД.ММ.ГГГГ" name="course[startDate]" value="{{ (form.startDate.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.startDate) }}
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="course_finishDate">Крайна дата</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_finishDate" placeholder="ДД.ММ.ГГГГ" name="course[finishDate]">
+                            <input type="text" class="form-control" id="course_finishDate" placeholder="ДД.ММ.ГГГГ" name="course[finishDate]" value="{{ (form.finishDate.vars.value )}}">
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.finishDate) }}
@@ -51,7 +51,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="course_price">Цена в левове</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_price" placeholder="000.00" name="course[price]">
+                            <input type="text" class="form-control" id="course_price" placeholder="000.00" name="course[price]" value="{{ (form.price.vars.value )}}" >
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.price) }}
@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="course_priceText">Цената словом</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="course_priceText" placeholder="Цената словом" name="course[priceText]">
+                            <input type="text" class="form-control" id="course_priceText" placeholder="Цената словом" name="course[priceText]" value="{{ (form.priceText.vars.value )}}" >
                         </div>
                         <div class="form-errors">
                             {{ form_errors(form.priceText) }}
