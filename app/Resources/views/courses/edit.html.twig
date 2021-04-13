@@ -2,14 +2,13 @@
 
 {% block main %}
 
-    {% for msg in app.session.flashbag.get('errors')  %}
-        <div class="alert alert-danger">
-            {{ msg }}
-        </div>
-    {% endfor %}
-
     <div class="container body-content span=8 offset=2">
         <div class="well">
+            {% for msg in app.session.flashbag.get('errors')  %}
+                <div class="alert alert-danger">
+                    {{ msg }}
+                </div>
+            {% endfor %}
             <form class="form-horizontal" action="{{ path('course_edit', {id: course.id}) }}" method="post">
                 <fieldset>
                     <legend>Редактиране на курс</legend>

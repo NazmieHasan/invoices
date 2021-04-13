@@ -35,6 +35,12 @@ class Course
      *     maxMessage="Максималната дължина на заглавието е 40"
      * )
      *
+     * @Assert\Regex(
+     *     pattern = "/(*UTF8)^[А-Яа-я0-9\-\+ ]+$/",
+     *     match=true,
+     *     message="Заглавието може да съдържа букви, цифри, '+', '-', и интервал"
+     * )
+     *
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, unique=true)
@@ -49,6 +55,12 @@ class Course
      *     max = 200,
      *     minMessage="Минималната дължина на описанието е 20",
      *     maxMessage="Максималната дължина на описанието е 200"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/(*UTF8)^[А-Яа-я0-9\-\+\,\.\;\?\! ]+$/",
+     *     match=true,
+     *     message="Описанието може да съдържа букви, цифри, '+', '-', ',', '.', ';', '?', '!'  и интервал"
      * )
      *
      * @var string

@@ -64,9 +64,15 @@ class User implements UserInterface
      *
      * @Assert\Length(
      *     min = 3,
-     *     max = 12,
+     *     max = 13,
      *     minMessage="Минималната дължина на това поле е 3",
      *     maxMessage="Максималната дължина на това поле е 12"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/(*UTF8)^([А-Я]{1})([а-я]+)$/",
+     *     match=true,
+     *     message="Това поле трябва да започва с главна буква последвано от малки букви"
      * )
      *
      * @var string
@@ -80,9 +86,15 @@ class User implements UserInterface
      *
      * @Assert\Length(
      *     min = 3,
-     *     max = 12,
+     *     max = 13,
      *     minMessage="Минималната дължина на това поле е 3",
      *     maxMessage="Максималната дължина на това поле е 12"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/(*UTF8)^([А-Я]{1})([а-я]+)$/",
+     *     match=true,
+     *     message="Това поле трябва да започва с главна буква последвано от малки букви"
      * )
      *
      * @var string
@@ -96,9 +108,15 @@ class User implements UserInterface
      *
      * @Assert\Length(
      *     min = 3,
-     *     max = 12,
+     *     max = 13,
      *     minMessage="Минималната дължина на това поле е 3",
      *     maxMessage="Максималната дължина на това поле е 12"
+     * )
+     *
+     * @Assert\Regex(
+     *     pattern = "/(*UTF8)^([А-Я]{1})([а-я]+)$/",
+     *     match=true,
+     *     message="Това поле трябва да започва с главна буква последвано от малки букви"
      * )
      *
      * @var string
