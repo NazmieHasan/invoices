@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="row">
-            {% for enrolling in pagination %}
+            {% for enrolling in enrollings %}
                 <div class="col-md-12 col-enrollings">
                     <div class="col-md-2">         
                         <h4>{{ enrolling.id }} {{ enrolling.dateAdded|date("d.m.Y") }}</h4>
@@ -67,7 +67,7 @@
     <div class="container text-center">
         {# display navigation #}
         <div class="navigation">
-            {{ knp_pagination_render(pagination) }}
+            {{ knp_pagination_render(enrollings) }}
         </div>
     </div>
    

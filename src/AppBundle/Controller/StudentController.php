@@ -131,7 +131,7 @@ class StudentController extends Controller
         
         $paginator = $this->get('knp_paginator');
                 
-        $pagination = $paginator->paginate(
+        $students = $paginator->paginate(
         $students, /* query NOT result */
         $request->query->getInt('page', 1), /*page number*/
         6 /*limit per page*/
@@ -139,7 +139,7 @@ class StudentController extends Controller
         
         return $this->render('students/all.html.twig',
             [
-                'pagination' => $pagination
+                'students' => $students
             ]);
     }
 

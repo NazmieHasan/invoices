@@ -11,7 +11,7 @@
     <div class="container body-content">
         <a class="btn btn-primary" href="{{ path('course_create') }}">Създай нов курс</a>
         <div class="row">
-            {% for course in pagination %}
+            {% for course in courses %}
             <div class="col-md-6">
                 <div class="home-col">
                     <a class="course-title" href="{{ path('course_view', { id: course.id } ) }}">{{ course.title }}</a>
@@ -26,7 +26,7 @@
     <div class="container text-center">
         {# display navigation #}
         <div class="navigation">
-            {{ knp_pagination_render(pagination) }}
+            {{ knp_pagination_render(courses) }}
         </div>  
     </div>     
  

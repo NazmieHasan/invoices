@@ -81,7 +81,7 @@ class EnrollingController extends Controller
         
         $paginator = $this->get('knp_paginator');
                 
-        $pagination = $paginator->paginate(
+        $enrollings = $paginator->paginate(
         $enrollings, /* query NOT result */
         $request->query->getInt('page', 1), /*page number*/
         8 /*limit per page*/
@@ -89,7 +89,7 @@ class EnrollingController extends Controller
         
         return $this->render('enrollings/all.html.twig',
             [
-                'pagination' => $pagination
+                'enrollings' => $enrollings
             ]);
     }
     

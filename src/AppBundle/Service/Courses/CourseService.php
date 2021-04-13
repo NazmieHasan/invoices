@@ -67,7 +67,7 @@ class CourseService implements CourseServiceInterface
      */
     public function getAll()
     {
-      return $this->courseRepository->findAll();
+      return $this->courseRepository->findBy([], ['id' => 'DESC']);
     }
 
     /**
