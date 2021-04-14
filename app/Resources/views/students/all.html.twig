@@ -21,9 +21,7 @@
                             <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }}</h3>
                             <h4>Personal Number: {{ student.personalNumber }}</h4>
                             <p class="students-btn">
-                                <a class="btn btn-primary" href="{{ path('student_view', {id: student.id}) }}">Виж курсовете</a>
-                                <a class="btn btn-success" href="{{ path('student_edit', {id: student.id}) }}">Редактирай</a>
-                                <a class="btn btn-danger" href="{{ path('student_delete', {id: student.id}) }}">Изтрий</a>
+                                <a class="btn btn-primary" href="{{ path('student_view', {id: student.id}) }}">Детайли</a> 
                             </p>
                         </div>
                     </div>

@@ -47,6 +47,23 @@ class EnrollingRepository extends \Doctrine\ORM\EntityRepository
             return false;
         }
     }
+    
+    /**
+     * @param Enrolling $enrolling
+     * @return bool|string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function remove(Enrolling $enrolling){
+        try {
+            $this->_em->remove($enrolling);
+            $this->_em->flush();
+            return true;
+        } catch (OptimisticLockException $e) {
+            return false;
+        }
+    }
+
 
 }
 

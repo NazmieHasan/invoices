@@ -47,6 +47,17 @@ class EnrollingService implements EnrollingServiceInterface
 
         return $this->enrollingRepository->insert($enrolling);
     }
+    
+    /**
+     * @param Enrolling $enrolling
+     * @return bool
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Enrolling $enrolling): bool
+    {
+        return $this->enrollingRepository->remove($enrolling);
+    }
 
     /**
      * @param int $id

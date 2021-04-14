@@ -8,7 +8,12 @@
         </div>
     {% endfor %} 
       
-    <a class="btn btn-primary" href="{{ path('enrolling_create') }}">Ново записване</a>
+    {% if ((students is empty) or (courses is empty)) %}
+        <p class="error-empty">Въведете курсове и/или клиенти, за да имате достъп до бутона!</p>
+        <a href="{{ path('enrolling_create') }}"><button type="button" class="btn btn-primary" disabled>Ново записване</button></a>
+    {% else %}
+        <a href="{{ path('enrolling_create') }}"><button type="button" class="btn btn-primary">Ново записване</button></a>
+    {% endif %}
     
     <div class="container body-content container-enrollings">
         <div class="row">
@@ -56,8 +61,9 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                       <p><a href="{{ path('view_invoice', {id: enrolling.id}) }}" target=_blank>Преглед</a></p>
-                       <a class="btn btn-danger" href="{{ path('download_invoice', {id: enrolling.id}) }}">Изтегли</a>  
+                       <a class="btn btn-danger" href="{{ path('download_invoice', {id: enrolling.id}) }}">ИЗТЕГЛИ</a> 
+                       <p><a href="{{ path('view_invoice', {id: enrolling.id}) }}" target=_blank>Прегледай</a></p>
+                       <a class="btn btn-danger btn-delete" href="{{ path('delete_invoice', {id: enrolling.id}) }}">Изтрий</a> 
                     </div>  
                 </div>
             {% endfor %}

@@ -40,6 +40,9 @@ body {
     list-style-type: none;
     color: #e74c3c;
 }
+.error-empty {
+    color: #e74c3c;
+}
 .a-custom {
     font-size: 16px;
     word-spacing: 4px;
@@ -72,6 +75,10 @@ body {
     padding-right: 40px;
     padding-left: 40px;
 }
+.btn-delete {
+    padding-right: 22px;
+    padding-left: 22px;
+}
 .btn-success-custom, .btn-danger-custom {
     margin-top: 15px;
     margin-right: 30px;
@@ -97,7 +104,8 @@ body {
     padding: 0;  
 }
 .home-col {
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     padding: 10px 10px 10px 10px;
     background: #f5f5f5;
 }
@@ -159,7 +167,7 @@ legend, .col-title h4, .personal-num {
     border-radius: 50%;
 }
 footer {
-    margin-top: 90px;
+    margin-top: 120px;
     background: #2c3e50;
 }
 .modal-footer {
@@ -167,6 +175,6 @@ footer {
     color: white;
     text-align: center;
     border-top-width: 0;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }

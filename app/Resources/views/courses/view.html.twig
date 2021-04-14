@@ -6,14 +6,26 @@
         <div class="row">
             <div class="col-md-9">
                 <article>
-                    <h2><span>{{ course.id }}</span> {{ course.title }}</h2>
+                    <h2>[{{ course.id }}] {{ course.title }}</h2>
                     <p>{{ course.description }}</p>
                     <p>Начална дата: {{ course.startDate|date("d.m.Y") }}</p>
                     <p>Крайна дата: {{ course.finishDate|date("d.m.Y") }}</p> 
                     <p>Цена: {{ course.price }}лв.</p>
                     <div>
                         <a class="btn btn-success" href="{{ path('course_edit', {id: course.id}) }}">Редактирай</a>
-                        <a class="btn btn-danger" href="{{ path('course_delete', {id: course.id}) }}">Изтрий</a>
+                        {% for enrolling in enrollings %}
+                            {% if ((enrollings is not empty) and ({id: course.id} == {id: enrolling.course.id})) %}
+                                <a href="{{ path('course_delete', {id: course.id}) }}"><button type=button" class="btn btn-danger" disabled>Изтрий</button></a>     
+                            {% endif %}
+                        {% endfor %}
+                        {% for enrolling in enrollings %}
+                            {% if ((enrollings is not empty) and ({id: course.id} != {id: enrolling.course.id})) %}
+                                <a href="{{ path('course_delete', {id: course.id}) }}"><button type=button" class="btn btn-danger">Изтрий</button></a>     
+                            {% endif %}
+                        {% endfor %}
+                        {% if (enrollings is empty) %}
+                            <a href="{{ path('course_delete', {id: course.id}) }}"><button type=button" class="btn btn-danger">Изтрий</button></a>
+                        {% endif %}
                         <a class="btn btn-default" href="{{ path('invoices_index') }}">Към всички курсове</a>
                     </div>
                 </article>

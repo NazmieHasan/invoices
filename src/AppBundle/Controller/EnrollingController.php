@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Enrolling;
+use AppBundle\Entity\Course;
 use AppBundle\Entity\Student;
 use AppBundle\Form\EnrollingType;
 use AppBundle\Service\Enrollings\EnrollingServiceInterface;
+use AppBundle\Service\Courses\CourseServiceInterface;
+use AppBundle\Service\Students\StudentServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormInterface;
@@ -21,11 +24,31 @@ class EnrollingController extends Controller
      * @var EnrollingServiceInterface
      */
     private $enrollingService;
+    
+    /**
+     * @var CourseServiceInterface
+     */
+    private $courseService;
+    
+    /**
+     * @var StudentServiceInterface
+     */
+    private $studentService;
 
+    /**
+     * EnrollingController constructor.
+     * @param EnrollingServiceInterface $enrollingService
+     * @param CourseServiceInterface $courseService
+     * @param StudentServiceInterface $studentService
+     */
     public function __construct(
-        EnrollingServiceInterface $enrollingService)
+        EnrollingServiceInterface $enrollingService,
+        CourseServiceInterface $courseService,
+        StudentServiceInterface $studentService)
     {
         $this->enrollingService = $enrollingService;
+        $this->courseService = $courseService;
+        $this->studentService = $studentService;
     }
 
     /**
@@ -87,9 +110,14 @@ class EnrollingController extends Controller
         8 /*limit per page*/
         );
         
+        $courses = $this->courseService->getAll();
+        $students = $this->studentService->getAll();
+        
         return $this->render('enrollings/all.html.twig',
             [
-                'enrollings' => $enrollings
+                'enrollings' => $enrollings,
+                'courses' => $courses,
+                'students'=> $students
             ]);
     }
     
@@ -162,5 +190,25 @@ class EnrollingController extends Controller
             "Attachment" => true
         ]);
     }
+    
+    
+    /**
+     * @Route("/enrolling/delete/{id}", name="delete_invoice")
+     *
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteProcess(Request $request, int $id)
+    {
+        $enrolling = $this->enrollingService->findOneById($id);
+        $form = $this->createForm(EnrollingType::class, $enrolling);
+        $form->handleRequest($request);
+        $this->enrollingService->delete($enrolling);
+        $this->addFlash("info", "Фактурата е изтрита успешно!");
+        return $this->redirectToRoute("all_enrollings");
+    }
+    
 
 }

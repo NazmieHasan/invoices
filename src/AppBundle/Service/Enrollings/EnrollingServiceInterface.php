@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 interface EnrollingServiceInterface
 {
     public function save(Enrolling $enrolling) : bool;
+    public function delete(Enrolling $enrolling) : bool;
     public function findOneById(int $id) : ?Enrolling;
     public function findOne(Enrolling $enrolling) : ?Enrolling;
     public function getAll();
