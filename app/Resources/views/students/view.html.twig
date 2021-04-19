@@ -23,15 +23,15 @@
                 {% endfor %}
                 {% if (enrollings is empty) %}
                     <a href="{{ path('student_delete', {id: student.id}) }}"><button type=button" class="btn btn-danger">Изтрий</button></a>
-                {% endif %}    
+                {% endif %} 
+                <a class="btn btn-default" href="{{ path('all_students') }}">Към всички студенти</a>   
                 <hr />
                 {% for enrolling in enrollings %}
-                    <p>{{ enrolling.id }} {{ enrolling.dateAdded|date("Y-m-d") }}
+                    <p>{{ enrolling.id }} {{ enrolling.dateAdded|date("d.m.Y") }}
                         <a href="{{ path('course_view', { id: enrolling.course.id } ) }}"> {{ enrolling.course.title }} </a>
                     </p>         
                     <hr />
-                {% endfor %}
-                <a class="btn btn-default" href="{{ path('all_students') }}">Към всички студенти</a>      
+                {% endfor %}      
             </div>
         </div>  
     </div>
