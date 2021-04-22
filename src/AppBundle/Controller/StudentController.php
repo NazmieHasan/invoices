@@ -119,15 +119,27 @@ class StudentController extends Controller
             ]);
     }
     
+    
     /**
      * @Route("/students", name="all_students")
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @param Reguest $reguest
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function All(Request $request)
     {
         $students = $this->studentService->getAll();
+         
+        if($request->isMethod("POST")) {  
+        $personalNumber = $request->get('personalNumber');
+        
+        $em = $this->getDoctrine()->getManager();
+        $students = $em->getRepository("AppBundle:Student")
+                       ->findBy(
+                           [
+                               'personalNumber' => $personalNumber
+                           ]);
+        }
         
         $paginator = $this->get('knp_paginator');
                 
@@ -136,11 +148,11 @@ class StudentController extends Controller
         $request->query->getInt('page', 1), /*page number*/
         6 /*limit per page*/
         );
-        
+            
         return $this->render('students/all.html.twig',
-            [
-                'students' => $students
-            ]);
+           [
+               'students' => $students
+           ]);     
     }
 
     /**
@@ -173,7 +185,8 @@ class StudentController extends Controller
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editProcess(Request $request, $id) {
+    public function editProcess(Request $request, $id) 
+    {
 
         $student = $this->studentService->findOneById($id);
         $form = $this->createForm(StudentType::class, $student);
@@ -233,74 +246,7 @@ class StudentController extends Controller
                 );
                 $student->setImage($fileName);
             }
-        }
-        
+        }  
     }
-    
-    /**
-     * @Route("/find-student-personal-number", name="student_find_personal_number", methods={"GET"})
-     * @param Request $request
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function findPersonalNumber(Request $request)
-    { 
-        return $this->render('students/find-personal-number.html.twig');     
-    }
-    
-     /**
-     * @Route("/find-student-personal-number", methods={"POST"})
-     * @param Request $request
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function findProcessPersonalNumber(Request $request)
-    {
-        $em =$this->getDoctrine()->getManager();
-        $student = $em->getRepository(Student::class)->findAll();
-            
-        $personalNumber = $request->get('personalNumber');
-        
-        $student = $em->getRepository("AppBundle:Student")->findBy(array('personalNumber' => $personalNumber));
-            
-        return $this->render('students/find-result-personal-number.html.twig',
-           [
-               'student' => $student
-           ]);     
-    }
-    
-    /**
-     * @Route("/find-student-first-name", name="student_find_first_name", methods={"GET"})
-     * @param Request $request
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function findFirstName(Request $request)
-    { 
-        return $this->render('students/find-first-name.html.twig');     
-    }
-    
-     /**
-     * @Route("/find-student-first-name", methods={"POST"})
-     * @param Request $request
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function findProcessFirstName(Request $request)
-    {
-        $em =$this->getDoctrine()->getManager();
-        $student = $em->getRepository(Student::class)->findAll();
-            
-        $firstName = $request->get('firstName');
-        
-        $student = $em->getRepository("AppBundle:Student")->findBy(array('firstName' => $firstName));
-            
-        return $this->render('students/find-result-first-name.html.twig',
-           [
-               'student' => $student
-           ]);     
-    }
-    
-    
-    
+     
 }

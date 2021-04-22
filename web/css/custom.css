@@ -43,6 +43,24 @@ body {
 .error-empty {
     color: #e74c3c;
 }
+.custom-row {
+    border-bottom: 3px solid darkgrey;
+}
+.custom-row form {
+    margin-top: 30px;
+}
+.custom-row form input {
+    background-color: #ecf0f1;
+    border: 2px solid gray;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.custom-row form .btn-primary {
+    padding-top: 3px;
+    padding-right: 7px;
+    padding-bottom: 3px;
+    padding-left: 7px; 
+}
 .a-custom {
     font-size: 16px;
     word-spacing: 4px;
@@ -59,8 +77,7 @@ body {
     margin-bottom: 0;
     padding-top: 30px;
     padding-bottom: 30px;
-    text-align: center;
-    border-bottom: 3px solid darkgrey;
+    text-align: center;  
 }
 .h3-custom {
     text-align: center;

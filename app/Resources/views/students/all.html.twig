@@ -7,10 +7,21 @@
             {{ msg }}
         </div>
     {% endfor %}
+   
     
     <div class="container container-custom">
-        <div class="row">
-            <h2 class="h2-custom">КЛИЕНТИ В СИСТЕМАТА<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">Създай нов</a></h2>
+        <div class="row custom-row">
+            <div class="col-md-8">
+                <h2 class="h2-custom">КЛИЕНТИ В СИСТЕМАТА<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">Създай нов</a></h2>
+            </div>
+            <div class="col-md-4 text-right">
+                <form method="POST">
+                    <input type="text" name="personalNumber" placeholder="Търсене по ЕГН">
+                    <button type="submit" class="btn btn-primary">Търси</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">    
             {% for student in students %}
                 <div class="col-md-12 col-12-custom text-center">
                     <div class="col-md-8 col-md-offset-2 text-center">
@@ -36,5 +47,6 @@
             {{ knp_pagination_render(students) }}
         </div>
     </div>
-
+    
 {% endblock %}
+    
