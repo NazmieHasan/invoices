@@ -51,45 +51,24 @@ class EnrollingController extends Controller
         $this->studentService = $studentService;
     }
 
-    /**
-     * @Route("/create-enrolling", name="enrolling_create", methods={"GET"})
-     * @param Request $request
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function create(Request $request)
-    {
-        return $this->render('enrollings/create.html.twig',
-            [
-            'form' => $this
-                ->createForm(EnrollingType::class)
-                ->createView()
-            ]);
-    }
 
     /**
-     * @Route("/create-enrolling", methods={"POST"})
+     * @Route("/create-enrolling/{id}", name="enrolling_create", methods={"POST"})
      * @param Request $request
+     * @param $id
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function createProcess(Request $request)
+    public function create(Request $request, $id)
     {
         $enrolling = new Enrolling();
         $form = $this->createForm(EnrollingType::class, $enrolling);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $this->enrollingService->save($enrolling);
-            $this->addFlash("info", "Записването е успешно!");
-            return $this->redirectToRoute("all_enrollings");
-        }
-
-        return $this->render('enrollings/create.html.twig',
-            [
-                'enrolling' => $enrolling,
-                'form' => $form->createView()
-            ]);
+        $this->addFlash("info", "Записването е успешно!");
+        $this->enrollingService->save($enrolling, $id);
+            
+        return $this->redirectToRoute("student_view", ['id' => $id]);
     }
     
     /**

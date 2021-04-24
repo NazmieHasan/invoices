@@ -37,13 +37,17 @@ class EnrollingService implements EnrollingServiceInterface
     }
 
     /**
+     * @param Request $request
      * @param Enrolling $enrolling
+     * @param int $studentId
      * @return bool
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Enrolling $enrolling): bool
+    public function save(Enrolling $enrolling, int $studentId): bool
     {
+        $enrolling
+            ->setStudent($this->studentService->findOneById($studentId));
 
         return $this->enrollingRepository->insert($enrolling);
     }

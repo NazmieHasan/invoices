@@ -7,13 +7,6 @@
             {{ msg }}
         </div>
     {% endfor %} 
-      
-    {% if ((students is empty) or (courses is empty)) %}
-        <p class="error-empty">Въведете курсове и/или клиенти, за да имате достъп до бутона!</p>
-        <a href="{{ path('enrolling_create') }}"><button type="button" class="btn btn-primary" disabled>Ново записване</button></a>
-    {% else %}
-        <a href="{{ path('enrolling_create') }}"><button type="button" class="btn btn-primary">Ново записване</button></a>
-    {% endif %}
     
     <div class="container body-content container-enrollings">
         <div class="row">

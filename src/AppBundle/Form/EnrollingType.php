@@ -18,8 +18,6 @@ class EnrollingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('student', EntityType::class,
-                ['class' => Student::class])
             ->add('course', EntityType::class,
                 ['class' => Course::class]);
     }

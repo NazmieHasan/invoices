@@ -3,9 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Student;
+use AppBundle\Entity\Course;
 use AppBundle\Entity\Enrolling;
 use AppBundle\Form\StudentType;
+use AppBundle\Form\EnrollingType;
+use AppBundle\Form\CourseType;
 use AppBundle\Service\Students\StudentServiceInterface;
+use AppBundle\Service\Courses\CourseServiceInterface;
 use AppBundle\Service\Enrollings\EnrollingServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -22,6 +26,11 @@ class StudentController extends Controller
      */
     private $studentService;
     
+    /**
+     * @var CourseServiceInterface
+     */
+    private $courseService;
+    
      /**
      * @var EnrollingServiceInterface
      */
@@ -30,13 +39,16 @@ class StudentController extends Controller
     /**
      * StudentController constructor.
      * @param StudentServiceInterface $studentService
+     * @param CourseServiceInterface $courseService
      * @param EnrollingServiceInterface $enrollingService
      */
     public function __construct(
         StudentServiceInterface $studentService,
+        CourseServiceInterface $courseService,
         EnrollingServiceInterface $enrollingService)
     {
         $this->studentService = $studentService;
+        $this->courseService = $courseService;
         $this->enrollingService = $enrollingService;
     }
 
@@ -105,6 +117,9 @@ class StudentController extends Controller
     public function view(int $id)
     {
         $student = $this->studentService->findOneById($id);
+        $courses = $this->courseService->getAll();
+        
+        $form = $this->createForm(EnrollingType::class);
         
         if (null === $student){
             return $this->redirectToRoute("invoices_index");
@@ -114,8 +129,12 @@ class StudentController extends Controller
 
         return $this->render("students/view.html.twig",
             [
+                'form' => $this
+                ->createForm(EnrollingType::class)
+                ->createView(),
                 'student' => $student,
-                'enrollings' => $enrollings
+                'courses' => $courses,
+                'enrollings' => $enrollings,
             ]);
     }
     

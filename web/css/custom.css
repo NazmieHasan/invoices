@@ -40,8 +40,11 @@ body {
     list-style-type: none;
     color: #e74c3c;
 }
-.error-empty {
+.error-empty, .error-empty a {
     color: #e74c3c;
+}
+.error-empty a {
+    text-decoration: underline;  
 }
 .custom-row {
     border-bottom: 3px solid darkgrey;

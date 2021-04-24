@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}  
-
+{% block main %}
+   
+    <div class="container body-content span=8 offset=2 text-center">
+        {% for msg in app.session.flashbag.get('info')  %}
+            <div class="alert alert-success" id="info">
+                {{ msg }}
+            </div>
+        {% endfor %} 
+    </div> 
+     
+    <div class="container body-content span=8 offset=2 text-center">
+        <div class="well"> 
+            {% if (courses is not empty) %}
+                <h4><button type="button" class="btn btn-success" id="Add">Записване на клиента в курс</button></h4>
+                <div id="enrolling"></div>
+             {% else %}
+                <p class="error-empty"><a href="{{ path('course_create') }}">Въведете курсове,</a> за да имате достъп до бутона!</p>   
+                <h4><button type="button" class="btn btn-success" id="Add" disabled>Записване на клиента в курс</button></h4>
+                <div id="enrolling"></div>
+             {% endif %}  
+        </div>
+    </div>
+                
     <div class="container body-content">
         <div class="row">
             <div class="col-md-4">
@@ -35,5 +56,36 @@
             </div>
         </div>  
     </div>
+    
+    
+    <script>
+        $('#Add').click(function () {
+            $('#enrolling').empty();
+            let enrollingForm =
+                `
+                <form method="post" action="{{ path('enrolling_create', { id: student.id}) }}">
+                    <fieldset>
+                    <div class="form-group">
+                        <div class="col-md-12 form-widget">
+                            {{ form_widget(form.course) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <h4><button type="submit" class="btn btn-primary">Запиши</button></h4>
+                        </div>
+                    </div>
+                    {{  form_row(form._token) }}
+                </fieldset>
+                </form>
+                `;
+                
+            $('#enrolling').append(enrollingForm);
+            $('#enrolling').toggle();
+        })
+    </script>
+
+    
+    
    
 {% endblock %}
