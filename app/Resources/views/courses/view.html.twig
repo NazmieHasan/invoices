@@ -13,61 +13,57 @@
                     <p>Цена: {{ course.price }}лв.</p>
                     <div>
                         <a class="btn btn-success" href="{{ path('course_edit', {id: course.id}) }}">Редактирай</a>
-                        {% for enrolling in enrollings %}
-                            {% if ((enrollings is not empty) and ({id: course.id} == {id: enrolling.course.id})) %}
-                                <a href="{{ path('course_delete', {id: course.id}) }}"><button type=button" class="btn btn-danger" disabled>Изтрий</button></a>     
-                            {% endif %}
-                        {% endfor %}
-                        {% for enrolling in enrollings %}
-                            {% if ((enrollings is not empty) and ({id: course.id} != {id: enrolling.course.id})) %}
-                                <a href="{{ path('course_delete', {id: course.id}) }}"><button type=button" class="btn btn-danger">Изтрий</button></a>     
-                            {% endif %}
-                        {% endfor %}
-                        {% if (enrollings is empty) %}
-                            <a href="{{ path('course_delete', {id: course.id}) }}"><button type=button" class="btn btn-danger">Изтрий</button></a>
+                        {% if enrollings|length > 0 %}
+                            <a href="{{ path('course_delete', {id: course.id}) }}"><button type="button" class="btn btn-danger" disabled>Изтрий</button></a>
+                        {% else %}
+                            <a href="{{ path('course_delete', {id: course.id}) }}"><button type="button" class="btn btn-danger">Изтрий</button></a>
                         {% endif %}
                         <a class="btn btn-default" href="{{ path('invoices_index') }}">Към всички курсове</a>
                     </div>
                 </article>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">  
-                <h2>Спъсък на записаните клиенти</h2>
-            </div>
-        </div>  
-        <div class="row courses">
-            <div class="col-md-10">
-                <div class="col-md-1 text-center">
-                    <p>#</p>
+        {% if enrollings|length == 0 %} 
+            <h3>Няма записани клиенти в този курс</h3>
+        {% else %}
+            <div class="row">
+                <div class="col-md-12">  
+                    <h2>Спъсък на записаните клиенти</h2>
                 </div>
-                <div class="col-md-2">
-                    <p>Дата</p>
-                </div>
-                <div class="col-md-7">
-                    <p>Клиент</p>
-                </div>
-            </div>
-        </div>
-        <div class="row courses">
-            {% for enrolling in enrollings %}
-                <div class="col-md-10"> 
+            </div>  
+            <div class="row courses">
+                <div class="col-md-10">
                     <div class="col-md-1 text-center">
-                        <p>{{ enrolling.id }}</p>
-                    </diV>
+                        <p>#</p>
+                    </div>
                     <div class="col-md-2">
-                        <p>{{ enrolling.dateAdded|date("d.m.Y") }} </p>
-                    </diV>
+                        <p>Дата</p>
+                    </div>
                     <div class="col-md-7">
-                        <p>
-                            <a href="{{ path('student_view', { id: enrolling.student.id } ) }}">       
-                                {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} 
-                            </a>
-                        </p> 
-                    </div>   
+                        <p>Клиент</p>
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+            <div class="row courses">
+                {% for enrolling in enrollings %}
+                    <div class="col-md-10"> 
+                        <div class="col-md-1 text-center">
+                            <p>{{ enrolling.id }}</p>
+                        </diV>
+                        <div class="col-md-2">
+                            <p>{{ enrolling.dateAdded|date("d.m.Y") }} </p>
+                        </diV>
+                        <div class="col-md-7">
+                            <p>
+                                <a href="{{ path('student_view', { id: enrolling.student.id } ) }}">       
+                                    {{ enrolling.student.firstName }} {{ enrolling.student.fathersName }} {{ enrolling.student.lastName }} 
+                                </a>
+                            </p> 
+                        </div>   
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
