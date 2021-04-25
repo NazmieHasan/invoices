@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Enrolling
  *
- * @ORM\Table(name="enrollings")
+ * @ORM\Table(name="enrollings", uniqueConstraints={@ORM\UniqueConstraint(name="student_course_unique", columns={"student_id", "course_id"})}))
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EnrollingRepository")
+ * @UniqueEntity(fields={"studentId", "courseId"})
  */
 class Enrolling
 {

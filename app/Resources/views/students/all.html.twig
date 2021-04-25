@@ -13,19 +13,33 @@
             <div class="col-md-8">
                 <h2 class="h2-custom">КЛИЕНТИ В СИСТЕМАТА<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">Създай нов</a></h2>
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-md-4 text-center">
                 <form method="POST">
-                    <input type="text" name="personalNumber" placeholder="Търсене по ЕГН">
-                    <button type="submit" class="btn btn-primary">Търси</button>
+                    <div class="row">
+                    <div class="col-md-7">
+                        <input type="text" class="icon-find" name="personalNumber" placeholder="&#xF002; Търсене по ЕГН" />
+                        <p>Моля, въведете 10 цифри!</p>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="submit" class="btn btn-primary">Търси</button>
+                    </div>
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="row">    
+        <div class="row">
+            <div class="col-md-12 text-center">
+                {% if students|length == 0 %}
+                    <h3>Няма намерен резултат</h3>
+                {% endif %} 
+            </div>  
             {% for student in students %}
                 <div class="col-md-12 col-12-custom text-center">
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <div class="col-md-4">
-                            <img src ="{{ asset('uploads/images/students/' ~ student.image) }}" alt="image" class="img-thumbnail img-students">
+                            <a href="{{ path('student_view', {id: student.id}) }}">
+                                <img src ="{{ asset('uploads/images/students/' ~ student.image) }}" alt="image" class="img-thumbnail img-students">
+                            </a>
                         </div>
                         <div class="col-md-8 text-left">
                             <h3>{{ student.firstName }} {{ student.fathersName }} {{ student.lastName }}</h3>
