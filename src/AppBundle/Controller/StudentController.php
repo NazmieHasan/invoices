@@ -150,15 +150,15 @@ class StudentController extends Controller
         $students = $this->studentService->getAll();
          
         if($request->isMethod("POST")) {  
-        $personalNumber = $request->get('personalNumber');
+            $personalNumber = $request->get('personalNumber');
         
-        $em = $this->getDoctrine()->getManager();
-        $students = $em->getRepository("AppBundle:Student")
+            $em = $this->getDoctrine()->getManager();
+            $students = $em->getRepository("AppBundle:Student")
                        ->findBy(
                            [
                                'personalNumber' => $personalNumber
                            ]);
-        }
+            }
         
         $paginator = $this->get('knp_paginator');
                 
