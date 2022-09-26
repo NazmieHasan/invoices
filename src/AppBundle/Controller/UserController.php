@@ -74,7 +74,6 @@ class UserController extends Controller
      */
     public function logout(){
         throw new \Exception("Logout failed!");
-
     }
 
     /**

@@ -77,7 +77,7 @@ class EnrollingController extends Controller
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function All(Request $request)
+    public function all(Request $request)
     {
         $enrollings = $this->enrollingService->getAll();
         

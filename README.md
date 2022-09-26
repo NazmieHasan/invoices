@@ -1,6 +1,8 @@
 # invoices
 
-PHP 7.2.34
+Bootstrap v3.3.7
+
+PHP 7.2.34, MySQL
 
 Symfony 3.4.47
 

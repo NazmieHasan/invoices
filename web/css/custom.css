@@ -9,6 +9,7 @@ body {
 }
 .nav > li > a {
     padding: 20px 25px;
+    font-size: 16px;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {
     color: #dddddd;

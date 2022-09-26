@@ -11,7 +11,7 @@
     <div class="container container-custom">
         <div class="row custom-row">
             <div class="col-md-8">
-                <h2 class="h2-custom">КЛИЕНТИ В СИСТЕМАТА<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">Създай нов</a></h2>
+                <h2 class="h2-custom">Клиенти в системата<a href="{{ path('student_create') }}" class="btn btn-primary btn-primary-custom">Създай нов</a></h2>
             </div>
             <div class="col-md-4 text-center">
                 <form method="POST">
@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 {% if students|length == 0 %}
-                    <h3>Няма намерен резултат</h3>
+                    <h3 class="h3-custom">Няма намерен резултат</h3>
                 {% endif %} 
             </div>  
             {% for student in students %}

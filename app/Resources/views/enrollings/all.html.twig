@@ -54,9 +54,9 @@
                         </a>
                     </div>
                     <div class="col-md-2">
-                       <a class="btn btn-danger" href="{{ path('download_invoice', {id: enrolling.id}) }}">ИЗТЕГЛИ</a> 
-                       <p><a href="{{ path('view_invoice', {id: enrolling.id}) }}" target=_blank>Прегледай</a></p>
-                       <a class="btn btn-danger btn-delete" href="{{ path('delete_invoice', {id: enrolling.id}) }}">Изтрий</a> 
+                       <a class="btn btn-warning btn-xs" href="{{ path('view_invoice', {id: enrolling.id}) }}" target=_blank>Прегледай</a>
+                       <a class="btn btn-success btn-xs" href="{{ path('download_invoice', {id: enrolling.id}) }}">Изтегли</a> 
+                       <a class="btn btn-danger btn-xs" href="{{ path('delete_invoice', {id: enrolling.id}) }}">Изтрий</a> 
                     </div>  
                 </div>
             {% endfor %}
