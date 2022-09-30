@@ -29,6 +29,6 @@ view example invoice in screenshot folder
 ![5-all-students](https://user-images.githubusercontent.com/58294359/193232106-f21d2f7e-6f4b-4179-88dc-60d504d336fc.png)
 ![6-view-student](https://user-images.githubusercontent.com/58294359/193232117-dc1df2f6-9089-4c6b-b509-ad422986b505.png)
 ![7-enrolling](https://user-images.githubusercontent.com/58294359/193232136-9900ec27-3fed-445b-8e11-cc82a32d4b8f.png)
-![8-view-student](https://user-images.githubusercontent.com/58294359/193232177-ab0ce3
+![8-view-student](https://user-images.githubusercontent.com/58294359/193232619-3cd50b70-315a-4ce5-8401-5bbde8fcbc90.png)
 ![9-all-enrollings](https://user-images.githubusercontent.com/58294359/193232212-aad85ee1-d20d-4a93-95e5-af18e66001c6.png)
 70-ea4e-4279-b8ad-7ce6809a6b4d.png)
