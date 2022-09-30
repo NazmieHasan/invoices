@@ -31,4 +31,3 @@ view example invoice in screenshot folder
 ![7-enrolling](https://user-images.githubusercontent.com/58294359/193232136-9900ec27-3fed-445b-8e11-cc82a32d4b8f.png)
 ![8-view-student](https://user-images.githubusercontent.com/58294359/193232619-3cd50b70-315a-4ce5-8401-5bbde8fcbc90.png)
 ![9-all-enrollings](https://user-images.githubusercontent.com/58294359/193232212-aad85ee1-d20d-4a93-95e5-af18e66001c6.png)
-70-ea4e-4279-b8ad-7ce6809a6b4d.png)
